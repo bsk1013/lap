@@ -4654,7 +4654,6 @@ JSON 배열만 출력 (설명 없이):
   if (!jsonMatch) return [];
 
   const parsed = JSON.parse(jsonMatch[0]);
-  const isPractical = engineExamType === 'practical';
   return parsed.map(q => {
     const id = 'q-vision-' + Date.now() + '-' + Math.random().toString(36).slice(2,6);
     const base = {
