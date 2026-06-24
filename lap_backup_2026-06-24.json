@@ -1,0 +1,3321 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "exportDate": "2026-06-24T01:07:10.488Z",
+    "totalQuestions": 165
+  },
+  "subjects": [
+    {
+      "id": "engineer-ego",
+      "name": "인간공학기사",
+      "shortName": "인공기",
+      "icon": "🧑‍🦼",
+      "examTypes": [
+        "practical"
+      ]
+    },
+    {
+      "id": "engineer-elec",
+      "name": "전기기사",
+      "shortName": "전기기",
+      "icon": "⚡",
+      "examTypes": [
+        "practical"
+      ]
+    },
+    {
+      "id": "engineer-civil",
+      "name": "토목기사",
+      "shortName": "토목기",
+      "icon": "🏗️",
+      "examTypes": [
+        "practical"
+      ]
+    },
+    {
+      "id": "engineer-safety",
+      "name": "산업안전기사",
+      "shortName": "산안기",
+      "icon": "🦺",
+      "examTypes": [
+        "practical"
+      ]
+    },
+    {
+      "id": "word-processor",
+      "name": "워드프로세서",
+      "shortName": "워드",
+      "icon": "📄",
+      "examTypes": [
+        "practical"
+      ]
+    },
+    {
+      "id": "craftsman-it",
+      "name": "정보처리기능사",
+      "shortName": "정처능",
+      "icon": "🖥️",
+      "examTypes": [
+        "practical"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "q-demo-001",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "year": 2024,
+      "session": 1,
+      "number": 1,
+      "category": "소프트웨어 설계",
+      "questionText": "다음 중 OSI 7계층 모델에서 전송 계층(Transport Layer)에 해당하는 프로토콜로 올바른 것은?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "HTTP"
+        },
+        {
+          "index": 2,
+          "text": "IP"
+        },
+        {
+          "index": 3,
+          "text": "TCP"
+        },
+        {
+          "index": 4,
+          "text": "ARP"
+        }
+      ],
+      "correctAnswer": 3,
+      "explanation": "TCP(Transmission Control Protocol)는 OSI 7계층에서 전송 계층(4계층)에 해당하는 프로토콜로, 신뢰성 있는 데이터 전송을 담당합니다. HTTP는 응용 계층, IP는 네트워크 계층, ARP는 데이터링크/네트워크 계층에 해당합니다.",
+      "tags": [
+        "네트워크",
+        "OSI 7계층",
+        "프로토콜"
+      ]
+    },
+    {
+      "id": "q-demo-002",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "year": 2024,
+      "session": 1,
+      "number": 2,
+      "category": "소프트웨어 설계",
+      "questionText": "객체지향 프로그래밍의 4가지 핵심 특성이 아닌 것은?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "캡슐화(Encapsulation)"
+        },
+        {
+          "index": 2,
+          "text": "상속(Inheritance)"
+        },
+        {
+          "index": 3,
+          "text": "다형성(Polymorphism)"
+        },
+        {
+          "index": 4,
+          "text": "순차성(Sequentiality)"
+        }
+      ],
+      "correctAnswer": 4,
+      "explanation": "객체지향 프로그래밍의 4가지 핵심 특성은 캡슐화, 상속, 다형성, 추상화(Abstraction)입니다. 순차성(Sequentiality)은 객체지향의 특성이 아닙니다.",
+      "tags": [
+        "객체지향",
+        "OOP",
+        "기본개념"
+      ]
+    },
+    {
+      "id": "q-demo-003",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "year": 2024,
+      "session": 1,
+      "number": 3,
+      "category": "데이터베이스",
+      "questionText": "관계형 데이터베이스에서 기본키(Primary Key)의 특성으로 올바르지 않은 것은?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "유일성: 테이블에서 각 행을 유일하게 식별"
+        },
+        {
+          "index": 2,
+          "text": "최소성: 꼭 필요한 최소한의 속성으로 구성"
+        },
+        {
+          "index": 3,
+          "text": "NULL 허용: 값이 없을 수 있음"
+        },
+        {
+          "index": 4,
+          "text": "불변성: 값이 자주 변경되지 않아야 함"
+        }
+      ],
+      "correctAnswer": 3,
+      "explanation": "기본키(Primary Key)는 NULL 값을 가질 수 없습니다. 기본키의 특성은 유일성(Uniqueness), 최소성(Minimality), NOT NULL(NULL 불허)입니다.",
+      "tags": [
+        "데이터베이스",
+        "DB",
+        "기본키",
+        "SQL"
+      ]
+    },
+    {
+      "id": "q-demo-004",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "year": 2024,
+      "session": 1,
+      "number": 4,
+      "category": "운영체제",
+      "questionText": "다음 중 프로세스(Process)와 스레드(Thread)에 대한 설명으로 올바른 것은?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "스레드는 프로세스보다 더 많은 자원을 사용한다"
+        },
+        {
+          "index": 2,
+          "text": "하나의 프로세스에는 반드시 하나의 스레드만 존재한다"
+        },
+        {
+          "index": 3,
+          "text": "스레드는 같은 프로세스 내에서 메모리를 공유한다"
+        },
+        {
+          "index": 4,
+          "text": "프로세스 간 통신은 스레드 간 통신보다 빠르다"
+        }
+      ],
+      "correctAnswer": 3,
+      "explanation": "같은 프로세스 내의 스레드들은 코드, 데이터, 힙 영역을 공유하며, 각 스레드는 자신만의 스택을 가집니다. 스레드는 프로세스보다 자원을 적게 사용하고, 스레드 간 통신이 프로세스 간 통신(IPC)보다 빠릅니다.",
+      "tags": [
+        "운영체제",
+        "OS",
+        "프로세스",
+        "스레드"
+      ]
+    },
+    {
+      "id": "q-demo-005",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "year": 2024,
+      "session": 1,
+      "number": 5,
+      "category": "알고리즘",
+      "questionText": "다음 정렬 알고리즘 중 평균 시간 복잡도가 O(n log n)인 것으로만 올바르게 묶인 것은?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "버블 정렬, 선택 정렬"
+        },
+        {
+          "index": 2,
+          "text": "퀵 정렬, 병합 정렬"
+        },
+        {
+          "index": 3,
+          "text": "삽입 정렬, 버블 정렬"
+        },
+        {
+          "index": 4,
+          "text": "선택 정렬, 삽입 정렬"
+        }
+      ],
+      "correctAnswer": 2,
+      "explanation": "퀵 정렬(Quick Sort)의 평균 시간복잡도는 O(n log n), 병합 정렬(Merge Sort)은 항상 O(n log n)입니다. 버블, 선택, 삽입 정렬은 O(n²)입니다.",
+      "tags": [
+        "알고리즘",
+        "정렬",
+        "시간복잡도"
+      ]
+    },
+    {
+      "id": "q-manual-1782238360638",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "year": 2024,
+      "session": 1,
+      "number": 1,
+      "category": "test",
+      "questionText": "test",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [
+        "배성경"
+      ],
+      "explanation": "",
+      "tags": [],
+      "createdAt": "2026-06-23T18:12:40.638Z"
+    },
+    {
+      "id": "q-vision-1782261327643-4i18",
+      "subjectId": "engineer-safety",
+      "examType": "practical",
+      "number": 32,
+      "questionText": "노로 표지판 금속 크기가 15m에서 놀이 3cm인 금속가 있다. 문자의 놀이:금기=5:1이다.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 6.88  2. 12cm  3. 2.4cm",
+      "category": "",
+      "tags": [],
+      "year": null,
+      "session": null,
+      "updatedAt": "2026-06-24T01:06:51.371Z"
+    },
+    {
+      "id": "q-vision-1782261327643-vg2b",
+      "subjectId": "engineer-safety",
+      "examType": "practical",
+      "number": 33,
+      "questionText": "작업자가 100개의 부품을 육안 검사하여 20개의 불량품을 판정하였다. 실제 불량품이 40개 라면 인간에러(human error) 확률은 약 얼마인지 구하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "인간실수확률(HEP) = (전체 불량품 개수 - 발견한 불량품 개수) / 부품 개수 = (40-20)/100 = 0.2",
+      "category": "",
+      "tags": [],
+      "year": null,
+      "session": null,
+      "updatedAt": "2026-06-24T01:07:02.798Z"
+    },
+    {
+      "id": "q-vision-1782261327643-qt48",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 34,
+      "questionText": "비페기 인풋 엔진 신뢰도 0.8, 오른쪽 엔진 신뢰도 0.99일 때 다음 신뢰도를 구하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "한쪽만 고장나도 추력"
+        },
+        {
+          "index": 2,
+          "text": "양쪽 다 고장나야 추력"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 0.8·0.9=0.72  2. 1-(1-0.8)(1-0.9)=0.98",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782261483932-pmh6",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 42,
+      "questionText": "100개 제품 검사 과정에서 정상품을 정상 판정 하리는 것을 히트라 할 때 각각 확률을 구하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "P(S/S)"
+        },
+        {
+          "index": 2,
+          "text": "P(S/N)"
+        },
+        {
+          "index": 3,
+          "text": "P(N/S)"
+        },
+        {
+          "index": 4,
+          "text": "P(N/N)"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. P(S/S): 정상제품을 정상 판정한 것 = 90/95 = 0.95\n2. P(S/N): 불량제품을 정상 판정한 것 = 3/5 = 0.6\n3. P(N/S): 정상제품을 불량 판정한 것 = 5/95 = 0.05\n4. P(N/N): 불량제품을 불량 판정한 것 = 2/5 = 0.4",
+      "category": "확률",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782261491617-kczy",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 43,
+      "questionText": "A, B 양품과 불량품을 선별하는 기대비용을 구하고 있다. 경제적인 대안을 고르시오. ·항목을 불량으로 판별 시 비용: 60만원     ·불량품을 양품으로 판별 시 비용: 10만원",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A가 더 경제적"
+        },
+        {
+          "index": 2,
+          "text": "B가 더 경제적"
+        },
+        {
+          "index": 3,
+          "text": "동일함"
+        },
+        {
+          "index": 4,
+          "text": "판단할 수 없음"
+        }
+      ],
+      "correctAnswer": 2,
+      "correctAnswers": [],
+      "explanation": "기대비용=Σ관찰비용×확률\nA=60×(1-0.6)+10×(1-0.95)=24.5만원\nB=60×(1-0.8)+10×(1-0.8)=14만원\nB가 더 비용 안드는 더 경제적이다.",
+      "category": "품질관리",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782261491617-5da4",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 44,
+      "questionText": "기계-작업 분석표이다. 작업자와 기계 유휴(병렬 데이사이클)가 발생되지 않는 이론적 기계 대수를 구하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "2.09대"
+        },
+        {
+          "index": 2,
+          "text": "2.55대"
+        },
+        {
+          "index": 3,
+          "text": "3.09대"
+        },
+        {
+          "index": 4,
+          "text": "3.55대"
+        }
+      ],
+      "correctAnswer": 3,
+      "correctAnswers": [],
+      "explanation": "이론적 기계 대수 = 인간과 기계 동시작업시간÷인간과 기계 동시작업시간 + 인간만의 작업시간\n= 0.1+1.6/(0.1+0.55) = 1.7/0.1+0.55 = 3.09대",
+      "category": "작업관리",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262319652-tc0z",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 53,
+      "questionText": "요소자업 소요시간 10회 측정 결과 평균관측시간 2분, 표준편차 0.35분이다. 물음에 답하시오.\n\n1. 레이팅계수 120%, 정미시간에 대한 PDF 여유율 30%일 때 표준시간과 8시간 근무 중 PD여유시간을 구하시오. (외경법 이용)\n\n2. 1예서 여유율 30%를 근무시간에 대한 비율로 잡중 인상해 표준시간 계산 시, 기업과 근로자 중 어느 쪽이 불리한지 표준시간을 구해 판단하시오. (내경법 이용)",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "외경법: 표준시간에 대한 여유시간을 적용\n표준시간(분) = 480 × 0.72/3.12 = 110.77분\n내경법: 정미시간에 여유율을 적용\n표준시간(분) = 480 × 1.029/3.429 = 144.04분\n여유시간이 증가했으므로 기업측에는 불리하고, 근로자측에는 유리하다.\n\n정답: 1. 80분, 2. 기업",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262319652-mata",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 54,
+      "questionText": "정미시간 2분, 1일 8시간 근무시간 근무여유율: 15%일 때 1일 표준 생산량(개)을 구하시오. (내경법 이용)",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1일 표준 생산량 = (근무시간(분) × 8 × 60) / (정미시간 × 2.353) = 204개\n표준시간 = 정미시간 / (1 - 근무여유율) = 2 / (1 - 0.15) = 2.353분\n\n정답: 1일 표준 생산량: 204개",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262339051-xdus",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 66,
+      "questionText": "프레스 작업장에서 8시간 동안 100dB 소음에 노출되고 있으며 조도 100lux인 작업장에서 작업하고 있다. 골골에 대하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "초정밀작업 시 조도주준"
+        },
+        {
+          "index": 2,
+          "text": "해당 소음에 대한 허용노출시간"
+        },
+        {
+          "index": 3,
+          "text": "해당 시간에 대한 허용 소음"
+        },
+        {
+          "index": 4,
+          "text": "프레스 방음장치 4가지"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 1. 750lux 이상  2. 2시간  3. 90dB  4. 카드식/수인식/방진자식/손쇠내기식",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-nhyu",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 1,
+      "questionText": "키보드의 경사는 ( ), 두께는 ( )cm 이하로 할 것",
+      "choices": [
+        {
+          "index": 1,
+          "text": ""
+        },
+        {
+          "index": 2,
+          "text": ""
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-va9l",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 2,
+      "questionText": "화면사 시야 범위는 수평선상에서 ( ) 밀미 이도록 한다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": ""
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-jrf9",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 3,
+      "questionText": "궐정치의 내각은 ( )도 이상이 되어야 한다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": ""
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-kupf",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 4,
+      "questionText": "무릎의 내각은 ( )도 전후가 되도록 한다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": ""
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-k9ad",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 5,
+      "questionText": "발목은 ( )도 범위 넓이는 도의 손가락의 위치를 적정하게 조절할 수 있도록 족어도 ( )의 범위에서 조정이 가능할 것",
+      "choices": [
+        {
+          "index": 1,
+          "text": ""
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-3azb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "작업대의 높이는 조정되지 않는 작업대를 사용하는 경우에는 바다면에서 자양대 높이가 ( ) 밀미의 것을 선택하고, 높이 조정이 가능한 작업대를 사용하는 경우에는 바다면에서 작업면 표면까지의 높이가 ( ) 인후에서 작업자의 체형에 알맞도록 조정하여 고정할 수 있을 것",
+      "choices": [
+        {
+          "index": 1,
+          "text": ""
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-0m8o",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 7,
+      "questionText": "눈으로부터 화면까지의 시거리는 ( )이상을 유지할 것",
+      "choices": [
+        {
+          "index": 1,
+          "text": ""
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-s971",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 1,
+      "questionText": "5도 이상 15도 이하/3",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-6ivu",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 2,
+      "questionText": "10도 이상 15도 이하",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-t4tb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 3,
+      "questionText": "90",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-cqtk",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 4,
+      "questionText": "90",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-2at3",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 5,
+      "questionText": "35cm 이상 45cm 이하",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-ewn1",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "60cm 이상 70cm 이하/65cm",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262364673-9vzr",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 7,
+      "questionText": "40cm",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262385259-70bk",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 5,
+      "questionText": "A이라 한은 작업자들을 2개 반 이상으로 나누어 같작 다른 시간대에 근무하도록 함으로써 사업장의 전체 작업시간을 늘리는 근로자 작업임금이나 작업조직방법을 말한다. A이라 한은 작업 B까지 사이의 시간이 포함된 교대차작업을 말한다. 아간작업자라 한은 야간 작업시간대나 저녁도 C 정상치 임금을 하는 근로자를 말한다. 아간작업자라 한은 야간 작업시간대 조도를 받게 하고 D시가 넘지 않는 범위에서 추가작업 메달다 약 1C 정도 높여 주어야 한다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 교대작업"
+        },
+        {
+          "index": 2,
+          "text": "B: 오후 10시부터 익일 오전 6시"
+        },
+        {
+          "index": 3,
+          "text": "C: 3시간 이상"
+        },
+        {
+          "index": 4,
+          "text": "D: 27"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: A: 교대작업 / B: 오후 10시부터 익일 오전 6시 / C: 3시간 이상 / D: 27",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262385259-qmyf",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "정신적 부하가 증가하면 몸경에 지수가 A하며 정신적 부하가 감소하면 협력무환수과수가 B인다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 감소"
+        },
+        {
+          "index": 2,
+          "text": "B: 증가"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: A: 감소 / B: 증가",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262394201-fcqi",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 7,
+      "questionText": "금고정 재질인 원인 중 하나인 반목동작 징의이다. 반강을 제우시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 30"
+        },
+        {
+          "index": 2,
+          "text": "B: 50"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "작업 주기시간이 A초 미만이거나 옅은 한 작업 단위가 전체 작업주기 B초 이상을 차지할 때 위험성이 있는 것으로 판단한다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262394202-602e",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 8,
+      "questionText": "다음 안전보심표지의 명칭을 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 인화성물질경고"
+        },
+        {
+          "index": 2,
+          "text": "B: 사용금지"
+        },
+        {
+          "index": 3,
+          "text": "C: 금성독성물질경고"
+        },
+        {
+          "index": 4,
+          "text": "D: 보행금지"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262414317-iblb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 16,
+      "questionText": "SWAIN의 휴먼에러 심리적 분류 중 어떤 종류의 에러인지 쓰시오.\n\n1. 자동차 하자 시 실내등 끄지 않아 방전되어 시동이 걸리지 않았다.\n2. 장에며 종자국에서 종자채 빼짐폴이 빠졌음나.\n3. 사이드브레이크 해제하지 않고 액셀을 밟았으나 자동차가 움직이지 않았다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "생략에러"
+        },
+        {
+          "index": 2,
+          "text": "실행에러"
+        },
+        {
+          "index": 3,
+          "text": "순서에러"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "실기 문제 - 각 사항별 에러 분류: 1번은 생략(부작위적) 에러(omission error), 2번은 실행(작위적) 에러(commission error), 3번은 과잉행동에러(extraneous error)로 분류됨",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262420736-xzen",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 17,
+      "questionText": "SWAIN의 유망에러 독립행위에 의한 분류 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 생략에러/실행에러/순서에러/시간에러, 해설: 16빈 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262420736-8c9k",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "인간오류 중 착오/실수/건망증을 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 착오: 상황해석을 잘못하거나 틀린 목표를 착각해 행하는 경우, 실수: 의도는 올바른 것이었지만, 행동이 의도한 것과는 다르게 나타나는 오류, 건망증: 어떤 행동을 잊어버리고 안하는 경우",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262420736-7ea6",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 19,
+      "questionText": "신호설출이론 적용 분야 3가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 산업장기 필기기술, 품질검사/의료진단/교통통제",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262429297-m1iv",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 20,
+      "questionText": "조건상 및 반사장치가 불가능한 경우 눈부심 방지 예방법을 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답:\n1. 화면 정자 조정할 것\n2. 화면에 후드 설치할 것\n3. 저휘도형 조명기구 사용할 것\n4. 화면상 문자와 배경과의 휘도비 낮출 것\n\n해설:\n사업주는 작업면에 도달하는 빛의 각도를 화면으로부터 45도 이내가 되도록 조정 및 제정을 제공하여야 한다. 그러나 화면상에 의한 눈부심 방지를 위해 하여야 한다. 다면, 조건상 빛의 반사장치가 불가능한 경우에는 다음 각 호의 방법으로 눈부심을 방지하도록 하여야 한다.\n1. 화면의 정자를 조정할 것\n2. 저휘도형 조명기구를 사용할 것\n3. 화면상의 문자와 배경과의 휘도비(Contrast)를 높을 것\n4. 화면에 후드를 설치하거나 조명기구에 각이 차단마 음을 설치할 것\n5. 그 밖의 눈부심을 방지하기 위한 조치를 강구할 것",
+      "category": "산업보건",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262429298-brpw",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 21,
+      "questionText": "작업로부터 들어오는 직사광광을 줄이는 방법 3가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답:\n자장을 설치한다./창문을 높게 설치한다./상문 안쪽에 우측날개를 설치한다.",
+      "category": "산업보건",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262441072-3zwc",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 25,
+      "questionText": "사용설명서 제작 시 고려사항 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 제품사진/제품성능/제품사용방법/제품설치방법",
+      "category": "기술문서",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262441073-0tvx",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 26,
+      "questionText": "인간 중심의 과정서 주의의 특성 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 선택성/발장성/변동성/일관집중성",
+      "category": "교육학",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262441073-9y1z",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 27,
+      "questionText": "제이콥 닐슨(Jakob Nielsen)이 말한 사용성 직도(정의) 5가지를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 효율성(effectiency)/사용빈도(frequency)/학습용이성(learnability)/기억용이성(memorability)/주관적만족도(subjective satisfaction)",
+      "category": "사용성",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262441073-u47m",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 28,
+      "questionText": "사용자 인터페이스 평가요소 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 기억력/작업심행속도/사용자 에러율/주관적 만족도",
+      "category": "인터페이스",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262463401-s58j",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 39,
+      "questionText": "아날로그 표시장치의 일반적인 지침 설계 요령을 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 1. 지침 끝은 눈금과 맞닿아 접치지 않게 한다. 2. 분굵한 지침 전각은 약 20° 정도를 사용한다. 3. 시작을 위에 지침을 놓은 면에 밝혀지건다. 4. 원형 눈금 경우 지침 색은 선단에서 눈의 중심까지 칠한다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262463401-8hq9",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 40,
+      "questionText": "촉각을 암호와 코딩할 때 사용되는 요소 3가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 형상/크기/표면촉감",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262463401-zh8m",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 41,
+      "questionText": "비명기 조종장치 코딩(음호화) 방법 6가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 색 코딩/형상 코딩/크기 코딩/촉감 코딩/위치 코딩/작동방법 코딩",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262477019-s0vn",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 45,
+      "questionText": "물음에 답하시오.\n1. 형물시 이음에 인장 중심이 중점하는 방법\n2. 어떤 자료를 나타내는 통계지가 몇 개 변수에 영향을 받을 때 이들 변수의 특성지에 대한 영향 정도를 명확히 하는 자료 해석법\n3. 2차원, 3차원 좌표에 도형으로 표시해 데이터 상관관계를 파악하기 위해 점적인 축정하는 통계기법",
+      "choices": [
+        {
+          "index": 1,
+          "text": "의미미분법"
+        },
+        {
+          "index": 2,
+          "text": "다변량분석법"
+        },
+        {
+          "index": 3,
+          "text": "산점도"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262477019-td5e",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 46,
+      "questionText": "디자인 작업 시 문제 해결 원칙 5단계를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "문제 형정 → 문제 분석 → 대안 탐색 → 대안 평가 → 신정안 제시",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262477019-medl",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 47,
+      "questionText": "산업체 제해 방정에 따른 재해 원인조사 시 해당 항목을 4가지로 정의하고 순서를 쓰시오. (=재해사례연구 순서)",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "사실 확인 → 직접원인과 문제점 확인 → 근본적 문제점 결정 → 대책수립",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262477019-r0hj",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 48,
+      "questionText": "일반적인 기억과정 순서를 쓰고, 4단계에 대한 정의를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "순서: 기명 → 파지 → 재생 → 제인\n제인: 과거에 경험했던 것과 비슷한 상태에 부딪혔을 때 떠오르는 것",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262481418-i2vi",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 49,
+      "questionText": "노면의 영어 7단계이다. 민간을 채우시오.\n목포 설정 → A → B → 신행 → 과악 → C → D",
+      "choices": [
+        {
+          "index": 1,
+          "text": "의도 형성화"
+        },
+        {
+          "index": 2,
+          "text": "명위 구재화"
+        },
+        {
+          "index": 3,
+          "text": "분석"
+        },
+        {
+          "index": 4,
+          "text": "평가"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "목포 설정 → 의도 형성화 → 명위 구재화 → 신행 → 파악 → 분석 → 평가",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262488176-mybt",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 52,
+      "questionText": "Barnes의 동작경제원칙 중 신체 사용 원칙에 관한 원칙 5가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 두 손은 같이 시작하고 같이 끝나도록 한다.\n2. 휴식시간을 제외하고 않은의 동시에 쉬지 않도록 한다.\n3. 두 팔은 동시에 서로 반대로 대칭적으로 움직이도록 한다.\n4. 가능하다면 심고도 자연스러운 리듬이 작업동작에 새기도록 작업을 배치한다.\n5. 손과 신체의 동작은 작업을 원만히 처리할 수 있는 법위 내에서 가장 낮은 등급등급을 사용하도록 한다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262495856-7axm",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 53,
+      "questionText": "Barnes의 동작경제원칙 중 작업장 배치 원칙에 관한 원칙 5가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 가능하면 낙하방법을 이용한다.\n2. 공구는 자용자 가까이 배치한다.\n3. 작업 훔이하게 적절한 조명 비춰준다.\n4. 모든 공구는 정해진 위치에 배치한다.\n5. 공구는 작업 중작이 원활히 수행되도록 그 위치를 정해준다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262495856-tqyb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 54,
+      "questionText": "Barnes의 동작경제원칙 중 공구 및 설비 디자인 원칙에 관한 원칙 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 가능하면 두 가지 기능 이상이 조합된 공구를 사용한다.\n2. 공구와 자세는 가능한 사용하기 쉽게 미리 위치를 작안준다.\n3. 자 손가락이 서로 다른 작업할 시 각 손가락 능력에 맞게 작업을 분배한다.\n4. 공구를 효과적으로 사용할 수 있는 작업에서는 이러한 장치를 사용하도록 해 앙손이 다른 일을 할 수 있도록 한다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262495856-bvrh",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 55,
+      "questionText": "부품 배치 4원칙을 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262502779-v0gi",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 60,
+      "questionText": "구조적/기능적 인체지수를 구분하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "구조 피하장"
+        },
+        {
+          "index": 2,
+          "text": "비된 여음"
+        },
+        {
+          "index": 3,
+          "text": "정상작업영역"
+        },
+        {
+          "index": 4,
+          "text": "신장"
+        },
+        {
+          "index": 5,
+          "text": "손목 굿곡 범위"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 구조적 2. 구조적 3. 기능적 4. 구조적 5. 기능적",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262508677-bqpn",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 62,
+      "questionText": "다음 것에 해당하는 인쇄축척 설계원칙을 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "사무실 의자 높이/자동차 좌석 높이조정"
+        },
+        {
+          "index": 2,
+          "text": "운웨 창구 높이/마트 계산대/공원 벤치"
+        },
+        {
+          "index": 3,
+          "text": "선반 높이/버스 승강이 높이"
+        },
+        {
+          "index": 4,
+          "text": "비상구 높이/그림 하중/명칭 좌석간 거리/출입문 크기"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "A: 조절식 설계  B: 평균치 설계  C: 극단치 설계(최소치)  D: 극단치 설계(최대치)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262513060-4twi",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 63,
+      "questionText": "보기에서 어슷러는 값을 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "조절치"
+        },
+        {
+          "index": 2,
+          "text": "최소극단치"
+        },
+        {
+          "index": 3,
+          "text": "최대극단치"
+        },
+        {
+          "index": 4,
+          "text": "평균치"
+        }
+      ],
+      "correctAnswer": 2,
+      "correctAnswers": [],
+      "explanation": "조절치 여5%tile~남 95%tile / 최소극단치 여 5%tile / 최대극단치 남 95%tile / 평균치 남녀 50%tile",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262537639-cgld",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 1,
+      "questionText": "급지식인 레일관에 30초 이상, 1주일에 여러도 2~3회 이상) 여가 및 취미활동을 하고 계시는 것에 표시(V)하여 주시기 바랍니다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "자주 한다"
+        },
+        {
+          "index": 2,
+          "text": "가끔 한다"
+        },
+        {
+          "index": 3,
+          "text": "거의 하지 않는다"
+        },
+        {
+          "index": 4,
+          "text": "전혀 하지 않는다"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262537639-95yg",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 2,
+      "questionText": "귀하의 하루 평균 가사노동시간(집하기, 빨래하기, 청소하기, 2시 미만의 아이 돌보기 등)은 얼마나 됩니까?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "기의 하지 않는다"
+        },
+        {
+          "index": 2,
+          "text": "1시간 미만"
+        },
+        {
+          "index": 3,
+          "text": "1~2시간 미만"
+        },
+        {
+          "index": 4,
+          "text": "2~3시간 미만"
+        },
+        {
+          "index": 5,
+          "text": "3시간 이상"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262537639-obg1",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 3,
+      "questionText": "귀하는 의식로부터 다음과 같은 질병에 대해 진단을 받은 적이 있습니까?(예: 질병에 제한)",
+      "choices": [
+        {
+          "index": 1,
+          "text": "당뇨병"
+        },
+        {
+          "index": 2,
+          "text": "고혈압"
+        },
+        {
+          "index": 3,
+          "text": "뇌중풍"
+        },
+        {
+          "index": 4,
+          "text": "아니오"
+        },
+        {
+          "index": 5,
+          "text": "예('예'인 경우 연속상태는 ?"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262537639-nkju",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 4,
+      "questionText": "과거에 은은 중은 옥은 사고(교통사고, 넘어짐, 추락 등)로 인해 손/손가락/손목, 팔/팔꿈치, 어깨, 목, 허리, 다리/발 부위에 다친 적이 있습니까?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "아니오"
+        },
+        {
+          "index": 2,
+          "text": "예"
+        },
+        {
+          "index": 3,
+          "text": "예('예'인 경우 부위는 ? (다중/손가락/손목 □팔/팔꿈치 □어깨 □목 □허리 □다리/발)"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262537639-z1jf",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 5,
+      "questionText": "현재 하시는 일의 육체적 부담 정도는 어느 정도인가?",
+      "choices": [
+        {
+          "index": 1,
+          "text": "전혀 힘들지 않음"
+        },
+        {
+          "index": 2,
+          "text": "진정한 함"
+        },
+        {
+          "index": 3,
+          "text": "약간 힘듦"
+        },
+        {
+          "index": 4,
+          "text": "힘듦"
+        },
+        {
+          "index": 5,
+          "text": "매우 힘듦"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262541323-xey0",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 75,
+      "questionText": "근본적 재정완 예방관리 프로그램 효율도를 그려시요.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "근본적 재정완 예방관리 프로그램의 효율도: 2개가 있다. 바로! 정답이 것과 맞의 것이다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262560180-mxc1",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 82,
+      "questionText": "근골격계 부담작업 유해요인 조사에서 개선 우선순위 결정 시 유해도 높은 작업 또는 특징 근로자에 대해 2가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "근골격계 부담작업에서 유해도 높은 작업 또는 특징 근로자에 대한 개선 우선순위 결정 시 고려사항: 1. 근로자 몸에 의해 운동범위의 축소, 귀는 험의 자해, 기능의 손실 등이 장우가 나타 남 2. 다수의 근로자가 유해요인에 노출되고 있거나 중상 및 불편을 요소하는 작업 3. 비용편의 효과가 큰 작업",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262560180-o572",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 83,
+      "questionText": "다음 물음에 답하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "유해요인 조사 시 사업장가 분류해야 할 문제 3가지와 보존기간"
+        },
+        {
+          "index": 2,
+          "text": "근로자 개인정보 자료 보존기간"
+        },
+        {
+          "index": 3,
+          "text": "사업, 설비 자료 보존기간"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "유해요인 기본조사표(5법)/근골격계질환 중상 조사표(5법)/개선계획 및 결과보고서(예당 설비가 작업장 내에 존재하는 동안) - 5년 동안 보존하며, 사실·설비와 관련된 개선계획 및 결과보고서는 해당 시설 및 설비가 작업장 내에 존재하는 동안 보존합니다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262565186-ueuq",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 85,
+      "questionText": "인체 동작 유형 중에서 굴곡/외전/회내/신전을 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "굴곡(flexion): 부위 간의 각도가 감소하는 신체 움직임\n외전(abduction): 신체의 중심선에서 바깥으로 이동하는 신체 움직임\n회내(internal rotation): 신체의 중심선으로부터 회전하는 신체 움직임\n신전(extension): 우위 간의 각도가 증가하는 신체 움직임\n굴곡(flexion): 부위 간의 각도가 감소하는 신체 움직임\n회내(pronation): 손바닥을 아래로 향하도록 하는 회전\n회외(supination): 손바닥을 위로 향하도록 하는 회전",
+      "category": "인체동작",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262584639-vzv0",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 97,
+      "questionText": "다음 낱말을 fail safe와 fool proof로 분류하시오.\nA: 기울이면 꺼지는 레이저 칼인기\nB: 2개 이상의 버팀이 엔진\nC: 두껍게 달아 떨어지지 않다\nD: 자동차 우방감지센서\nE: 자동차 우방감지센서\nF: 자동차 안전벨트",
+      "choices": [
+        {
+          "index": 1,
+          "text": "fail safe: B/D/F, fool proof: A/C/E"
+        },
+        {
+          "index": 2,
+          "text": "fail safe: A/D/F, fool proof: B/C/E"
+        },
+        {
+          "index": 3,
+          "text": "fail safe: C/D/E, fool proof: A/B/F"
+        },
+        {
+          "index": 4,
+          "text": "fail safe: B/D/E, fool proof: A/C/F"
+        }
+      ],
+      "correctAnswer": 1,
+      "correctAnswers": [],
+      "explanation": "fail safe: B/D/F, fool proof: A/C/E",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262584639-l7ve",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 98,
+      "questionText": "전자레인지 작동 중에 전자레인지 문을 열었을 때 전자레인지 담주게 하는 강제적인 기능을 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "인터록이며 기계가 작동하는 중에 개폐 시 기계가 정지하게 만드는 것이다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262584639-ktcj",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 99,
+      "questionText": "다음 물음에 답하시오.\n[두 개의 자를 보여주는 이미지]\n1. C/R의 작은 것 2. 민감도 큰 것 3. 조중시간 더 걸리는 것 4. 이동시간 더 걸리는 것",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A"
+        },
+        {
+          "index": 2,
+          "text": "A"
+        },
+        {
+          "index": 3,
+          "text": "A"
+        },
+        {
+          "index": 4,
+          "text": "B"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. A  2. A  3. A  4. B\n해설: 1. 표시장치 이동거리 큼/C/R이 작다. 2. C/R이 작을수록 민감도 크다. 3. C/R이 작을수록 조중시간 더 길다. 4. C/R이 큼수록 이동시간 더 길다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262596926-940e",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 103,
+      "questionText": "해당하는 앞뒤성 종류 쓰시오.\n1. 대버 옷틀면 앞뒤 옷라가고, 아래로 내려면 앞뒤 내려감\n2. 옷 옆으로 웃쪽 뒤로 직조는 켜지고 기타 원족 전조등 켜짐\n3. 김은 병에는 간정을 넣고, 옷을 병에는 소구를 넣는다.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 1. 운동적 앞뒤성  2. 공간적 앞뒤성  3. 개념적 앞뒤성",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262596926-we3l",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 104,
+      "questionText": "앞뒤성의 예이다. 민간을 채우시오.\n자동차 엔드을 오른쪽으로 돌리면 오른쪽으로 움직이고, 왼쪽으로 돌리면 왼쪽으로 움직이\n는 것을 ( ) 앞뒤성, 오른쪽 스위치를 키면 오른쪽 전등이 켜지고, 왼쪽 전등을 키면 왼\n쪽 전등이 켜지는 것을 ( ) 앞뒤성, 간장을은 검은색, 소주병은 초록색이라고 인지하는\n것을 ( ) 앞뒤성이라 한다.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 운동적/공간적/개념적",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262596926-ch9k",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 105,
+      "questionText": "가스펜이와 버튼 설계 시 인간공학적 설계 원칙 적고, 아래 3가지 중에서 유티에러 발생\n률이 가장 적은 것과 그 이유 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 인간공학적 설계 원칙: 공간 앞뒤성\n유튼에러 발생률이 가장 적은 것과 그 이유: B/공간 배치가 사용자 기대와 일치하다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262607783-8n1r",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 109,
+      "questionText": "OWAS는 전계 작업자세를 근골격계에 미치는 영향에 따라 크게 네 수준으로 분류하였다. 그 분류를 쓰시오.(조치단계 Action Category)",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "수준1: 작업자세에 아무런 조치도 필요치 않음\n수준2: 가까운 시일 내에 작업자세 교정이 필요함\n수준3: 가능한 빨리 작업자세를 교정해야 함\n수준4: 즉각적인 작업자세의 교정이 필요함",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262607783-26g1",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 110,
+      "questionText": "OWAS(Ovako Working-posture Analysis System) 평가항목 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "팔/다리/허리/하중",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262607783-sebr",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 111,
+      "questionText": "RULA(Rapid Upper Limb Assessment)의 평가항목을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "A그룹(윗팔/아래팔/손목/손목비틀림), B그룹(목/몸통/다리)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262607783-u2li",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 112,
+      "questionText": "RULA(Rapid Upper Limb Assessment) 단점을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "RULA는 어깨, 손목 등 상지에 초점을 맞춘 기법이라 전신 작업자세 분석에 한계가 있다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262624340-91gb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 120,
+      "questionText": "공정도(ASME)에서 사용되는 공정기호 중 가공/정제/저장/감사 외 나머지 공정을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "공정도(ASME)에서 사용되는 공정기호 중 가공/정제/저장/감사 외 나머지 공정을 쓰는 문제 (답: 윤반)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262624340-w7qb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 121,
+      "questionText": "길브레스가 제안한 것이며 인간이 행하는 손동작을 최소한의 기본동작으로 구분한 것을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "길브레스가 제안한 것이며 인간이 행하는 손동작을 최소한의 기본동작으로 구분한 것 (답: 서블릭기호)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262633074-jq5n",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 122,
+      "questionText": "동작연구를 통해 인간이 행하는 모든 A는 B가지의 기본동작으로 구성된다. C에 의해 만들어졌으며 동작내용분류는 D을 중분시킨다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "수작업"
+        },
+        {
+          "index": 2,
+          "text": "18"
+        },
+        {
+          "index": 3,
+          "text": "길브레스"
+        },
+        {
+          "index": 4,
+          "text": "동작동작"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "121번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262633074-yew9",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 123,
+      "questionText": "서블릿 기초 중 표용척/비용척 기호와 암금료 각자 4개씩 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "표용척: G(기키)/A(손팔)/U(사용)/DA(분해) 비표용척: I(결산)/R(류식)/Sh(창기)/St(선택)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262633074-r9kt",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 124,
+      "questionText": "서블릿 영문기호를 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "조립"
+        },
+        {
+          "index": 2,
+          "text": "분해"
+        },
+        {
+          "index": 3,
+          "text": "바운놓기"
+        },
+        {
+          "index": 4,
+          "text": "전택"
+        },
+        {
+          "index": 5,
+          "text": "뛰기"
+        },
+        {
+          "index": 6,
+          "text": "창기"
+        },
+        {
+          "index": 7,
+          "text": "탈손이동"
+        },
+        {
+          "index": 8,
+          "text": "검사"
+        },
+        {
+          "index": 9,
+          "text": "우식"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. A  2. DA  3. P  4. St  5. G  6. Sh  7. TE  8. I  9. R",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262639116-dopl",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 126,
+      "questionText": "RWL과 관련해 HM/VM/DM 설명하고, 이에 맞는 조건을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "HM: 수평계수이며 두팔 팔굽치 때 중심에서 손까지의 거리이다. 63cm 초과 시 0이 된다.\nVM: 수직계수이며 바닥에서 손까지 거리이다. 175cm 초과 시 0이 된다.\nDM: 거리계수이며 우직으로 이동한 거리이다. 175cm 초과 시 0이 된다.",
+      "category": "산업안전기사",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262648844-qgey",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 127,
+      "questionText": "RWL 관련 업소에서 상추깡이 0이 되도록 하는 조절을 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "수평계수: Acm 초과"
+        },
+        {
+          "index": 2,
+          "text": "수직계수: Bcm 초과"
+        },
+        {
+          "index": 3,
+          "text": "비대칭계수: Cm 초과"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답\nA: 63\nB: 175\nC: 135",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262648844-sjdi",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 128,
+      "questionText": "NIOSH 중량물 들기 작업지점의 4가지를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답\n역학적 조사: 이 작업조건에 종사한 사람과 근골격계질환의 발생이 연관됨\n생체역학적 기준: L5/S1 디스크에 350Kg의 생체역학적 부하가 걸리고 대부분의 젊고 건강한 작업자는 걸 수 있음\n생리학적 기준: 대사율이 3.5Kcal/min을 넘지 않음\n정신물리학적 기준: 여자 75% 이상과 남자 99% 이상이 수행 가능",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262648844-y0wy",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 129,
+      "questionText": "생계기능 유지를 위해 일정 에너지 필요하다. 단위시간당 에너지량이 무엇인지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답\n기초대사량",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262648844-5zvh",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 130,
+      "questionText": "근육을 모터 형태로 구분할 때 골격근/심장근/내장근을 분류하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답\n가로무늬근: 골격근/심장근\n민무늬근: 내장근",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262648844-l506",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 131,
+      "questionText": "우의근과 볼수의근 정의를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답\n우의근: 중추신경계 지배 받아 내 의지대로 움직이는 근육으로 골격근이 예이다.\n볼수의근: 자율신경계 지배를 받아 스스로 움직이는 근육으로 심장근, 내장근의 예이다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262654168-gb7e",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 132,
+      "questionText": "근육 수축 시 미오신 필라멘트 속으로 액틴 필라멘트가 미끄러져 들어가 결과로 근육이 짧아지는 이론의 무작인지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "근수축이론",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262654168-aqw1",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 133,
+      "questionText": "근육 수축 시 미오신과 액틴은 길이가 안 변한다. 이때 액틴과 미오신 사이의 작은 부분의 명칭을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "A대",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262668096-bzbd",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 146,
+      "questionText": "작업관리 문제해결 전자 중 다음 매도도출 방법을 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "구조적 갈등가 질문과 문제에 대해 매도지 작성"
+        },
+        {
+          "index": 2,
+          "text": "갈등가 적성한 매도지를 오른쪽으로 진탐"
+        },
+        {
+          "index": 3,
+          "text": "매도지 받은 사항은 내용 없는 후 해당 생각과 서술하고 다시 오른쪽으로 진탐"
+        },
+        {
+          "index": 4,
+          "text": "자신의 매도지가 옆 매거지 반복"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "마인드 맵핑",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262668096-8ge8",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 147,
+      "questionText": "다음 중 검사기법 평가를 고르시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "휴리스틱 평가법"
+        },
+        {
+          "index": 2,
+          "text": "GOMS모델"
+        },
+        {
+          "index": 3,
+          "text": "사용자 설문조사법"
+        },
+        {
+          "index": 4,
+          "text": "사용자 관찰법"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "사용자 설문조사법/휴리스틱 평가법",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262674594-8ih0",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 148,
+      "questionText": "GOMS모델 경영와 구성요소 4가지와 단점 2가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "147번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262674594-yxj8",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 149,
+      "questionText": "질문자 체크리스트 평가기준 가지고 평가대상을 보면서 사용성에 관한 문제점을 찾아나가는 사용성 평가방법이 무엇인지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "휴리스틱 평가법",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262674594-59ix",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 150,
+      "questionText": "다음을 설명하는 것을 쓰시오.\n자용성 평가기법의 대표적 정성적 조사방법 중 하나로 관심이 있는 특성을 기준으로 표적 집단을 3~5개 그룹으로 분류된 각 그룹별로 6~8명의 참가자들을 대상으로 진행자가 조사목적과 관련된 도론을 함으로써 개개대상에 대한 의견이나 문제점 등을 조사한다.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "FGI(Focus group interview)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262682944-8uab",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 156,
+      "questionText": "신호감출이 발생하는 빈칸 재우시오.\n1. 신호가 나타났을 때 신호라고 판정하는 것을 ( )라고 한다.\n2. 잡음을 신호로 판정하는 것을 ( )라고 한다.\n3. 신호를 잡음으로 판정하는 것을 ( )라고 한다.\n4. 잡음을 잡음으로 판정하는 것을 ( )라고 한다.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "Hit"
+        },
+        {
+          "index": 2,
+          "text": "False Alarm"
+        },
+        {
+          "index": 3,
+          "text": "Miss"
+        },
+        {
+          "index": 4,
+          "text": "Correct Rejection"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. Hit  2. False Alarm  3. Miss  4. Correct Rejection",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262688268-bxoh",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 157,
+      "questionText": "신호등 신호로 판정: 궁정(Hit)에 대한 보기를 보고 답하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "무신호를 신호로 판정"
+        },
+        {
+          "index": 2,
+          "text": "신호를 무신호로 판정"
+        },
+        {
+          "index": 3,
+          "text": "무신호를 무신호로 판정"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 1. False Alarm  2. Miss  3. Correct Rejection\n해설: 154번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262688268-nm86",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 158,
+      "questionText": "NIOSH 그래프이다. 빈칸을 채우시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "수용가능"
+        },
+        {
+          "index": 2,
+          "text": "관리개선"
+        },
+        {
+          "index": 3,
+          "text": "조치하한계기준"
+        },
+        {
+          "index": 4,
+          "text": "최대허용한계기준"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 1. 수용가능  2. 관리개선  3. 조치하한계기준  4. 최대허용한계기준",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262709568-isqy",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 7,
+      "questionText": "다음 정압지 표시장치 명칭을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "A: 둥글형, B: 둥목형, C: 계수형",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262709569-g61p",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 8,
+      "questionText": "Barnes의 동심경제원칙 중 신체 사용 원칙에 관한 원칙 5가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 두 손의 같이 시작하고 같이 끝나도록 한다. 2. 휴식시간을 제외하고 앞손이 동시에 쉬지 않도록 한다. 3. 두 팔은 중심에서 좌우 대칭적으로 움직이도록 한다. 4. 가능하면 팔 대신 자선스러운 리듬이 작업동작에 생기도록 작업을 배치한다. 5. 손과 신체의 동작은 작업을 원만히 처리할 수 있는 범위 내에서 가장 낮은 등작등급을 사용하도록 한다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262719192-601z",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 9,
+      "questionText": "근용적계정환 유위요인 중 작업조건과 관련된 요인 6가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "근도/지동/반복작업 동작/부하한 힘 사용/부적절한 작업자세/날카로운 면과의 신체접촉",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262719192-g12q",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 10,
+      "questionText": "근골격계 질환 예방관리프로그램을 시행해야 하는 경우 2가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 근골격계질환으로 인무상 질병으로 인정받은 근로자가 연간 10명 이상 발생한 사업장 2. 근골격계질환 예방과 관련해 노사 간 이견이 지속되는 사업장으로서 고용노동장관이 필요하다고 인정해 시행할 것을 명령한 경우",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262719192-jjy7",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 11,
+      "questionText": "다음 물음에 답하시오. 1. 상완을 지긋이 구부려 중심O로 회전하므로 펜이 깨 펼어 수 있는 구역 2. 전완과 상완을 굽게 펴서 파악할 수 있는 구역",
+      "choices": [
+        {
+          "index": 1,
+          "text": "정상작업영역"
+        },
+        {
+          "index": 2,
+          "text": "최대작업영역"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 1. 정상작업영역  2. 최대작업영역",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262719192-gf4y",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 12,
+      "questionText": "다음 용어를 쓰시오. 제품의 의미적 특성을 분여에 사용자 행동에 단서를 제공하는 것",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "행동유도성",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262723187-h7wn",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 14,
+      "questionText": "서블릿 영문기호를 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "조림"
+        },
+        {
+          "index": 2,
+          "text": "바로늘기"
+        },
+        {
+          "index": 3,
+          "text": "선택"
+        },
+        {
+          "index": 4,
+          "text": "귀기"
+        },
+        {
+          "index": 5,
+          "text": "민충이동"
+        },
+        {
+          "index": 6,
+          "text": "검사"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. A  2. P  3. St  4. G  5. TE  6. I",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262728101-aswf",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 17,
+      "questionText": "웨버의 법칙을 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "물리적 자극 변화의 최소법칙는 기준이 되는 자극 크기에 비례한다는 법칙",
+      "category": "기초문제",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262728101-tjuc",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "에칭하는 암염석 종류 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "레버 울리면 암염 울리카고, 아래로 내려면 암염 내려감",
+      "category": "기초문제",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262739775-632p",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 5,
+      "questionText": "5개 공정이다. 물음에 답하시오",
+      "choices": [
+        {
+          "index": 1,
+          "text": "주기시간"
+        },
+        {
+          "index": 2,
+          "text": "시간당 생산량"
+        },
+        {
+          "index": 3,
+          "text": "공정(금원)효율"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "이는 선택지 설명 문제로, 표의 각 공정에 대한 작업시간(초) 데이터: 공정1=20, 공정2=10, 공정3=15, 공정4=13, 공정5=8이 주어짐",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262744670-znnw",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 7,
+      "questionText": "8시간 작업동안 발생한 소음이다. TWA와 소음노출지수(직업성 여병)를 구하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "90dB: 5시간"
+        },
+        {
+          "index": 2,
+          "text": "95dB: 4시간"
+        },
+        {
+          "index": 3,
+          "text": "100dB: 2시간"
+        },
+        {
+          "index": 4,
+          "text": "105dB: 1시간"
+        },
+        {
+          "index": 5,
+          "text": "110dB: 0.5시간"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "TWA: 96.96dB, 소음노출지수: 262.5%, 부적합",
+      "category": "산업안전",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262748584-9kei",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 9,
+      "questionText": "금융결제 부담장업에 의한 간장장해 예방과 관련된 내용이다. 빈칸을 채우시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "금융결제 부담장업"
+        },
+        {
+          "index": 2,
+          "text": "금융결제질환"
+        },
+        {
+          "index": 3,
+          "text": "금융결제질환 예방관련 프로그램"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 금융결제 부담장업  2. 금융결제질환  3. 금융결제질환 예방관련 프로그램",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262757490-9sj7",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 10,
+      "questionText": "산업안전보건법상 안전관리자의 직무 5개 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 사업장 순회점검\n2. 업무 수행 내용 기록\n3. 위험성 평가에 관한 지도\n4. 신입장해 방생 원인 조사\n5. 안전교육 실시에 관한 지도",
+      "category": "산업안전보건법",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262757490-qur4",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 11,
+      "questionText": "제조물책임법상 결함 종류 3가지를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "제조상 결함: 제조물이 원래 의도한 설계와 다르게 제조된 않았을 때\n설계상 결함: 합리적 대체설계를 채용해 위험을 줄일 수 있었음에도 제조하지 않아 제조물이 안전하지 못하게 된 경우\n표시상 결함: 합리적 대체설계를 했지만 표시를 하지 않아 위험을 줄 수 있음에도 하지 않은 경우",
+      "category": "제조물책임법",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262757490-8ler",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 12,
+      "questionText": "다음 것에 해당하는 인체측정 설계원칙을 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 자무선 의자 높이/가동자 좌석 높이/조절"
+        },
+        {
+          "index": 2,
+          "text": "B: 은행 창구 높이/바닥 계산대/공원 벤치"
+        },
+        {
+          "index": 3,
+          "text": "C: 선박 높이/바닥 손잡이 높이"
+        },
+        {
+          "index": 4,
+          "text": "D: 버싱구 높이/그내 하중/열차 좌석간 거리/출입문 크기"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "A: 조절식 설계\nB: 평균치 설계\nC: 극단치 설계(최소치)\nD: 극단치 설계(최대치)",
+      "category": "인체공학",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262762715-lawc",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 14,
+      "questionText": "다음 갓을들을 fail safe와 fool proof로 분류하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 기울이면 걸치는 레이저 인식기"
+        },
+        {
+          "index": 2,
+          "text": "B: 2개 이상의 버튼기 엔진"
+        },
+        {
+          "index": 3,
+          "text": "C: 무질 누르고 동력와 열리는 약병"
+        },
+        {
+          "index": 4,
+          "text": "D: 스페어 타이어"
+        },
+        {
+          "index": 5,
+          "text": "E: 자동차 공방감지센서\nF: 자동차 인장벨트"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "fail safe: B/D/F\nfool proof: A/C/E",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262767047-ni2f",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 17,
+      "questionText": "인간공학 실험에서 고려해야 할 중숭변수 3가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "인간기준/시스템기준/작업환경기준",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262767047-y2t8",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "근육 수축 시 미오신과 액틴은 길이가 안 변한다. 이때 액틴과 미오신 사이의 겹은 부분의 명칭을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "A대",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262774701-moyd",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 5,
+      "questionText": "근골격계 부담작업에 의한 건강장해 예방과 관련된 내용이다. 반장은 체우시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "근골격계 부담작업"
+        },
+        {
+          "index": 2,
+          "text": "근골격계질환"
+        },
+        {
+          "index": 3,
+          "text": "근골격계질환 예방관리 프로그램"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "3번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262780717-zki5",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "근골격계 부담작업에 대한 내용이다. 빈칸을 채우시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 4시간"
+        },
+        {
+          "index": 2,
+          "text": "B: 2시간"
+        },
+        {
+          "index": 3,
+          "text": "C: 10회"
+        },
+        {
+          "index": 4,
+          "text": "D: 25회"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "4번 해설 참조",
+      "category": "산업안전보건",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262780717-unvx",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 8,
+      "questionText": "SWAIN의 휴먼에러 독립행위에 익한 분류 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "생략에러/심행에러/순서에러/시간에러",
+      "category": "인간공학",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262780717-5ily",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 9,
+      "questionText": "스트레스 주요척도(측정법) 6가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "근전도/심전도/넉전도/안전도/전기피부반응/침팜응함추위",
+      "category": "산업심리학",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262792017-mjdb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 14,
+      "questionText": "다음 몇음에 답하시오.\n1. 상악음 자연스럽게 주치으로 높아프린 제 전완판으로 편하게 뺨이 파악할 수 있는 구역\n2. 전완판 상악음을 굽게 펴서 파악할 수 있는 구역",
+      "choices": [
+        {
+          "index": 1,
+          "text": "정상직염역"
+        },
+        {
+          "index": 2,
+          "text": "최대직염역"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정상직염역, 최대직염역",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262792017-vvh5",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 15,
+      "questionText": "fail safe/fool proof/tamper proof를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "fail safe: 기게 파손, 기능 불량이 발생해도 항상 안전하게 작동되는 방식\nfool proof: 인간이 실수해도 기게 작동에 장작심으로 사고를 방지해주는 방식\ntamper proof: 안전장치 제거 시 기게 작동 안되는 방식",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262792017-eimw",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 16,
+      "questionText": "암침성의 예이다. 빈건을 채우시오.\n자동차 믹들을 오른쪽으로 돌리면 오른쪽으로 운직이고, 왼쪽으로 들리면 왼쪽으로 운직이 느 것을 ( )암침성, 오른쪽 스위치를 기면 오른쪽 전등이 켜지고, 왼쪽 전등을 기면 왼 쪽 전등이 켜지는 것을 ( )암침성, 간장묭으로 걸운센 소주병은 초록색이라고 인식하는 것을 ( ) 암침성이라 한다.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "문동적/공간적/개념적",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262792017-p6s9",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 17,
+      "questionText": "보기를 보고 답하시오.\n신호등 신호판 판정: 금정(Hit)\n1. 우신호를 신호로 판정  2. 신호를 무신호로 판정  3. 무신호를 무신호로 판정",
+      "choices": [
+        {
+          "index": 1,
+          "text": "False Alarm"
+        },
+        {
+          "index": 2,
+          "text": "Miss"
+        },
+        {
+          "index": 3,
+          "text": "Correct Rejection"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. False Alarm  2. Miss  3. Correct Rejection",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262796552-4vaz",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "고통을 수반하는 질환으로, 실제 테니스와는 관련 없는 상태에서 발생이 됨에도 불구하고 종종 tennis elbow라고 불리우는 명칭으로 인해 많은 운동은 일으키고 있지도 하며 발병 빈도 및 발병 부위에 궁중적으로 나타나는 통증의 영증을 크게 나타내지 만 경우에 따라 붓숨은 상완골 관절 전체에 걸쳐 나타나기도 하는 질환 명칭을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "단답형 문제",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262854879-eemd",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 5,
+      "questionText": "근골격계 부담작업에 대한 내용이다. 빌란움 제우식이.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "하루에 A 이상 집중작으로 자료입력 등을 위해 키보드 또는 마우스를 조작하는 작업"
+        },
+        {
+          "index": 2,
+          "text": "하루에 총 B 이상 머리 위에 손이 있거나, 팔굽치가 어깨 위에 있거나, 팔굽치를 몸통 아래로 몸통이 팔굽치를 몸통 위에 있거나 위치하거나 하는 상태에서 아래어지는 작업"
+        },
+        {
+          "index": 3,
+          "text": "하루에 총 C 이상 집중작으로 손가락의 1kg 이상 집중력이 필요한 작업"
+        },
+        {
+          "index": 4,
+          "text": "하루에 10회 이상 D 이상의 물체를 들고 내리는 작업"
+        },
+        {
+          "index": 5,
+          "text": "하루에 E 이상 10kg 이상의 물체를 들거나, 여깨 위에서 들거나, 여깨 위에서 들거나, 팔은 샅창에서 드는 작업"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "4번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262854879-anyw",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "SWAIN의 휴먼에 심리적 분류 중 어떤 중류의 에러인지 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "생략에러"
+        },
+        {
+          "index": 2,
+          "text": "실행에러"
+        },
+        {
+          "index": 3,
+          "text": "순차에러"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "16번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262854879-qm20",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 7,
+      "questionText": "여유시간 중 일반여유 중류 3가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "개인여유/피로여유/지연여유",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262864154-4ej7",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "서분법 영문기호를 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "조립"
+        },
+        {
+          "index": 2,
+          "text": "분해"
+        },
+        {
+          "index": 3,
+          "text": "바로늘기"
+        },
+        {
+          "index": 4,
+          "text": "선택"
+        },
+        {
+          "index": 5,
+          "text": "귀기"
+        },
+        {
+          "index": 6,
+          "text": "찾기"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. A  2. DA  3. P  4. St  5. G  6. Sh",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262871429-xng8",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "금공작계 부담작업에 대한 내용이다. 비라운 재우시오.\n\n하루에 A 이상 B 이상의 물재를 드는 작업\n하루에 C 이상 D 이상의 물재를 무루 아래에서 들거나, 어깨 위에서 들거나, 팔을 벨 은 상태에서 드는 작업\n하루에 중 B 이상, 물건 2회 이상 4.5kg 이상의 물재를 드는 작업",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 10회"
+        },
+        {
+          "index": 2,
+          "text": "B: 25kg"
+        },
+        {
+          "index": 3,
+          "text": "C: 25회"
+        },
+        {
+          "index": 4,
+          "text": "D: 10kg"
+        },
+        {
+          "index": 5,
+          "text": "E: 2시간"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "4번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262882163-b8c4",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 11,
+      "questionText": "손·팔 전동 증이는 방법 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 방진금구 이용\n2. 방진장갑 이용\n3. 전동금구 하루 사용시간 줄이기\n4. 연속적 진동 노출 피하기 위해 유시시간 가지지기",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262882163-gs06",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 12,
+      "questionText": "자염자가 물를을 밭에 대고 굴리고 앗아 유심하고 있다. 유해요소와 에방대책 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "부자연스러운 자세(작업댁 설치)/접촉스트레스(무릎보호대 착용)/반복동작(자동화설비 도입)/장시간 유해물질 노출(환기)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262882163-rjle",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 13,
+      "questionText": "조종자와 표시장치를 앉힘하여 설계 시 장점 5가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "조작오류 감소/만족도 증가/작업속도 증가/학습속도 증가/귀금시 대처속도 증가",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262882163-dgem",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 14,
+      "questionText": "RULA(Rapid Upper Limb Assessment)의 평가항목을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "A그룹(윗팔/아래팔/손목/손목비틀림), B그룹(목/몸통/다리)",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262882163-x6jm",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 15,
+      "questionText": "서울력 기준 중 요용적/비효율적 기준와 한글로 각각 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "요용적: G(귀기)/A(손굽)/U(사용)/DA(분돈)\n비효율적: I(결합)/R(유심)/Sh(짓장)/Sk(선택)\n121번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262889801-5u09",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 16,
+      "questionText": "NIOSH Lifting Equation(들기계수) 6가지 쓰시오. (단, 아이와 한글말 모두 쓴다.)",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: HM(수평계수)/VM(수직계수)/DM(거리계수)/AM(비대칭계수)/FM(빈도계수)/CM(커플링계수)",
+      "category": "산업안전",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262889801-jw2f",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 17,
+      "questionText": "다음 정의의 용어를 쓰시오.\n1. 척 구멍유리 원탁에 집중되어 있는 세포\n2. 주로 말막 조건에 있으며 바직적 조도수준이 낮음 때 기능하고, 흑백 응염만을 구분하는 세포",
+      "choices": [
+        {
+          "index": 1,
+          "text": "원추세포"
+        },
+        {
+          "index": 2,
+          "text": "간상세포"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 1. 원추세포  2. 간상세포",
+      "category": "보건",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262889801-86ns",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "Barnes의 동작정제 원칙 3가지 쓰고, 예시도 1가지씩 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 신체 사용 원칙: 두 손은 같이 시작하고 같이 끝난다. / 작업 배치 원칙: 공구는 사용자 가까이 배치한다. / 공구 및 설비 디자인 원칙: 가능하면 두 가지 기능 이상이 조합된 공구를 사용한다.",
+      "category": "산업안전",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262902210-pjsb",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "다음 안전보건표지의 명칭을 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A: 인화성물질경고"
+        },
+        {
+          "index": 2,
+          "text": "B: 사용금지"
+        },
+        {
+          "index": 3,
+          "text": "C: 급성독성물질경고"
+        },
+        {
+          "index": 4,
+          "text": "D: 보행금지"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "",
+      "category": "안전보건",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262902210-h3ew",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 8,
+      "questionText": "SWAIN의 유법에서 심리적 부하 중 어떤 종류의 에러인지 쓰시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "정략에러"
+        },
+        {
+          "index": 2,
+          "text": "실행에러"
+        },
+        {
+          "index": 3,
+          "text": "순서에러"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "16번 해설 참조",
+      "category": "인간공학",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262914866-89gm",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 12,
+      "questionText": "근공적계획환 유해요인 중 작업손상과 관련된 요인 6가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "69번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262914866-apqk",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 13,
+      "questionText": "근로자가 근본적계 부담작업하는 경우에 근로자에게 주지시켜야 하는 사항 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "71번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262914866-5hdj",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 14,
+      "questionText": "정상작업영역/좌대작업영역/좌악한계를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정상작업영역: 왓팔을 자연스럽게 수직으로 놀어드린 제 아래팔만으로 편하게 펼 수 있을 파악할\n좌대작업영역: 아래팔과 왓팔을 굼게 펼쳐 파악할 수 있는 구역\n파악한계: 앉은 작업자가 특정한 수작업 기능을 편안히 수행할 수 있는 공간의 외곽 한계",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262914866-zrzg",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 15,
+      "questionText": "작업기역에 속하는 하위 요소들 중 음운루트(고리)와 시공간 스케치패드(스케치팩)를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "음운루트: 말소리 정보를 짧은 시간 동안 제한된 수의 소리를 저장하는 것\n시공간 스케치 패드: 시각적, 공간적 정보를 감시동안 보관하게 해주는 것",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262921742-xq9c",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 16,
+      "questionText": "해야하는 압접성 종류 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 운동적 압접성 2. 공간적 압접성 3. 개념적 압접성",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262921742-768k",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "직업계산의 ECRS 원칙에서 의미하는 것 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "E(Eliminate, 제거): 불필요 작업 제거\nC(Combine, 결합): 다른 작업과의 결합\nR(Rearrange, 재배열): 작업순서 변경\nS(Simplify, 단순화): 작업 단순화",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262933660-0zvm",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 6,
+      "questionText": "VDT 증후군 예방사항이다, 빈칸을 채우시오.\n1. 키보드의 경사는 ( ), 두께는 ( )cm 이하로 할 것\n2. 팔꿈치의 내각은 ( )도 이상이 되야 한다.\n3. 모니터 내각은 ( )도 전후가 되도록 한다.\n4. 바닥 면에서 앉는 면까지 높이는 도래 손가락의 위치를 적절하게 조절할 수 있도록 적 어도 ( )의 법위에서 조정이 가능할 것\n5. 눈으로부터 작업면까지의 거리를 사용하는 경우에는 바닥면에서 작업대 표면까지의 높이 가 ( ) 건우에서 작업자의 체형에 맞추도록 조정하여 고정할 수 있을 것\n6. 눈으로부터 화면까지의 시거리는 ( )이상을 유지할 것",
+      "choices": [
+        {
+          "index": 1,
+          "text": "5도 이상 15도 이하"
+        },
+        {
+          "index": 2,
+          "text": "90"
+        },
+        {
+          "index": 3,
+          "text": "90"
+        },
+        {
+          "index": 4,
+          "text": "35cm 이상 45cm 이하"
+        },
+        {
+          "index": 5,
+          "text": "65cm"
+        },
+        {
+          "index": 6,
+          "text": "40cm"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 5도 이상 15도 이하 / 2. 90 / 3. 90 / 4. 35cm 이상 45cm 이하 / 5. 65cm / 6. 40cm",
+      "category": "VDT 증후군",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262941528-h2hq",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 10,
+      "questionText": "Barnes의 동작장제원칙 중 작업장 배치 원칙에 관한 원칙 5가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. 가능하면 낙하방향을 이용한다.\n2. 공구는 사용자 가까이 배치한다.\n3. 작업 물이나게 작정한 조명 비치준다.\n4. 모든 공구는 정해진 위치에 배치한다.\n5. 공구는 자접 등작이 원활히 수행되도록 그 위치를 정해준다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262941528-m81y",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 11,
+      "questionText": "구조적 인체치수와 기능적 인체치수를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "구조적 인체치수: 고정상태에서 측정하는 측정으로 표준자에서 정정 측정한 기능적 인체치수: 활동상태에서 측정하는 측정으로 움직임에 따른 동적 측정함",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262941528-2ybo",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 12,
+      "questionText": "정상작업영역/최대작업영역/피안전계를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정상작업영역: 윗팔을 자연스럽게 구기로 놓인도된 제 아래팔로는 편하게 벗어 파악할 수 있는 구역\n최대작업영역: 아래팔과 윗팔을 곧게 펼쳐 파악할 수 있는 구역\n파악한계: 앞은 작업자가 녹관한 수작업 기능을 편안히 수행할 수 있는 점전의 외곽 한계",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262950395-1rjg",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 13,
+      "questionText": "fail safe/fool proof/tamper proof를 설명하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "fail safe: 기계 파손, 기능 불량이 발생해도 안전 안전하게 작동되는 방식\nfool proof: 인간이 실수해도 기계 측에서 정상적으로 사고를 방지해주는 방식\ntamper proof: 안전장치 제거 시 기계 작동 안되는 방식",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262950395-lqox",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 14,
+      "questionText": "다음 물음에 답하시오.\n1. C/M바 자은 것 2. 민감도 큰 것 3. 조종시간 더 걸리는 것 4. 아동시간 더 걸리는 것",
+      "choices": [
+        {
+          "index": 1,
+          "text": "A"
+        },
+        {
+          "index": 2,
+          "text": "A"
+        },
+        {
+          "index": 3,
+          "text": "A"
+        },
+        {
+          "index": 4,
+          "text": "B"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. A  2. A  3. A  4. B\n해설: 99번 해설 참조",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262950395-h3td",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 15,
+      "questionText": "OWAS(Ovako Working-posture Analysis System) 평가항목 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "팔/다리/허리/하중",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262950395-ds75",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 16,
+      "questionText": "근육을 부위 형태로 구분한 때 골격근/심장근/내장근을 분류하시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "가로무늬근: 골격근/심장근\n민무늬근: 내장근",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262956075-86td",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 17,
+      "questionText": "GOMS모델 정의와 구성요소 4가지와 단점 2가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "구성요소: G(goal,목표)/O(operation,행위)/M(method,방법)/S(selection rules,선택규칙) 단점: 1. 이론 근거와 모델의 한계 실제적인 정확성 고려되지 않음 2. 다양한 사용자 수준에 대한 고려와 새로운 시스템을 익히는 단계는 다루지 못하고 있음",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262956075-0j0a",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 18,
+      "questionText": "다음 그래프에서 (1)~(4)에 해당하는 방음덕성과 신뢰도 의미하는 바를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "1. Correct Rejection 2. Miss 3. False Alarm 4. Hit d: 신호판정기준",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262971054-k7bw",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 4,
+      "questionText": "제조업자가 제조물의 결함을 알면서도 그 결함에 대하여 필요한 조치를 취하지 아니한 결과로 생명 또는 신체에 손해를 입은 자가 있는 경우 배상액을 정할 때 고려사항 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "고의성의 정도, 해당 제조물의 결함으로 인하여 발생한 손해의 정도, 해당 제조물의 공급으로 인하여 제조업자가 획득한 이익, 해당 제조물의 결함으로 인하여 제조업자가 행사처법 또는 행정처분을 받은 경우 그 행사처법 또는 행정처분의 지도, 해당 제조물의 결함 기간 및 공급 규모, 제조업자의 재산상태, 제조업자가 피해구제를 위하여 노력한 정도",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262982602-xgrx",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 8,
+      "questionText": "산업안전보건법령상 보건관리자의 자격 3가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "보건관리자는 다음 각 호의 어느 하나에 해당하는 사람으로 한다.\n1. 법에 따른 산업보건지도사 자격을 가진 사람\n2. '의료법'에 따른 의사\n3. '의료법'에 따른 간호사\n4. '국가기술자격법'에 따른 산업위생관리산업기사 또는 대기환경산업기사 이상의 자격을 취득한 사람\n5. '국가기술자격법'에 따른 인간공학기사 이상의 자격을 취득한 사람\n6. '고등교육법'에 따른 전문대 이상의 학과에서 산업보건 또는 산업위생분야의 학위를 취득한 사람(법령에 따라 이와 같은 수준 이상의 학력이 있다고 인정되는 사람은 포함)",
+      "category": "산업안전보건법",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262982602-5unp",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 9,
+      "questionText": "근골격계질환 종류 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "근골격계질환 종류: 황색납염/외상과염/건염/레이노드 현상",
+      "category": "근골격계질환",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262990356-a2s1",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 10,
+      "questionText": "기업건강증진지수(EHP)의 정의와 건강증진요구도 평가항목 4가지 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "기업건강증진지수(EHP, Enterprise Health Promotion Index)의 정의: 요구도와 활동도를 조합해 기업 건강증진수준을 계량화하기 위한 평가도구. 건강증진요구도 평가항목: 근로자수, 근로자 요구도, 보건정원, 의료담당자, 상태조사. 활동도 평가항목: 근로자 요구분석, 프로그램 적용범위, 성과평가 여부, 조직여건.",
+      "category": "기업보건관리",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262990356-893j",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 11,
+      "questionText": "인간공학적 위험요인 CHECK LIST의 평가표 구를 분류하시오.",
+      "choices": [
+        {
+          "index": 1,
+          "text": "평가표 A: 상지(손, 손목, 팔, 어깨, 목)의 위험요인을 평가"
+        },
+        {
+          "index": 2,
+          "text": "평가표 B: 허리, 하지의 위험요인을 평가"
+        },
+        {
+          "index": 3,
+          "text": "평가표 C: 인력 운반에 관한 평가"
+        }
+      ],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "인간공학적 위험요인 CHECK LIST(James P.Kohn & Daniel Hemenway의 MSD)의 중요한 위험요인을 찾음. 이 평가표는 더 많은 결정과 철저한 작업분석을 요구하는 작업에서 사용될 수 있다. 평가표 A: 상지(손, 손목, 팔, 어깨, 목)의 위험요인을 평가. 평가표 B: 허리, 하지의 위험요인을 평가. 평가표 C: 인력 운반에 관한 평가이며 이 평가표의 점수는 평가표 B의 점수와 합산되어 하는 평가.",
+      "category": "기업보건관리",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262994997-isgc",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 13,
+      "questionText": "동일한 관절운동을 일으키는 주동근(agonist)과 반대되는 작용을 하는 근육의 명칭을 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "정답: 길항근",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782262994997-9btw",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 14,
+      "questionText": "4m 또는 그보다 먼 문제판을 잘 볼 수 있는 원시 안경은 별인지 구하시오. (단, 명시거리는 25cm로 한다.)",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "해설: 도수(D) = 1/(명시거리(m)) - 1/(목표거리(m)) = 1/0.25 - 1/4 = 3.75D\n정답: 3.75D",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782263004051-x6uo",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 16,
+      "questionText": "근골격계질환에방의 기본원칙 4가지를 쓰시오.",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "인식의 확대, 노사 공동 참여의 원칙, 작업 특성상 근골격계질환자가 존재할 수 밖에 없다고 현실을 노·사 모두가 해석, 근골격계질환에방의 기본원칙: (1)인식의 확대/문서화의 원칙/전사적 지원 원칙/시스템 점근의 원칙 (2)노사 공동 참여의 원칙: 참여와 공중 운영이 필요하다. 모두공중, 유지시간 조성 등과 같이 관련 내채 운영이 중요하다 (3)작업 특성상 근골격계질환자가 존재할 수 밖에 없다고 현실을 노·사 모두가 해석 (4)지속적 지원 원칙: 보건관리자와 관련된 특정 부서하면 활동으로 조정의 공적을 달성할 수 있으 며 섬세, 인사, 공중 등 다양한 조직의 참여가 필요하며, 미국의 많은 사업장 운영 관리 방식 등을 참고할 수 있다. 자율적 해결을 위해서는 사업장 내 인적 조직이 필요하 며 지속적 개선 및 특 처장가가 있어야 한다.",
+      "category": "",
+      "tags": []
+    },
+    {
+      "id": "q-vision-1782263004051-ruek",
+      "subjectId": "engineer-ego",
+      "examType": "practical",
+      "number": 17,
+      "questionText": "다음 그림과 같은 시스템의 신뢰도는 약 얼마인지 구하시오. (단, 각각의 네모 안의 수 치는 각 공정의 신뢰도를 나타낸 것이다.)",
+      "choices": [],
+      "correctAnswer": null,
+      "correctAnswers": [],
+      "explanation": "0.8·0.9·(1-(1-0.75)(1-0.85))·(1-(1-0.8)(1-0.9))·0.85=0.577\n정답: 0.577",
+      "category": "",
+      "tags": []
+    }
+  ],
+  "userProgress": {
+    "studySessions": [],
+    "bookmarks": [],
+    "wrongAnswers": [
+      {
+        "qId": "q-demo-002",
+        "correctAns": 4,
+        "date": "2026-06-23T17:24:02.054Z"
+      },
+      {
+        "qId": "q-demo-004",
+        "correctAns": 3,
+        "date": "2026-06-23T17:24:02.054Z"
+      },
+      {
+        "qId": "q-demo-005",
+        "correctAns": 2,
+        "date": "2026-06-23T17:24:02.054Z"
+      }
+    ],
+    "examHistory": [
+      {
+        "date": "2026-06-23T17:22:50.264Z",
+        "subjectId": "engineer-ego",
+        "subjectName": "정보처理기사",
+        "score": 0,
+        "correct": 0,
+        "total": 5,
+        "elapsed": 15,
+        "passed": false,
+        "mode": "all"
+      },
+      {
+        "date": "2026-06-23T17:23:00.505Z",
+        "subjectId": "engineer-ego",
+        "subjectName": "정보처理기사",
+        "score": 0,
+        "correct": 0,
+        "total": 5,
+        "elapsed": 15,
+        "passed": false,
+        "mode": "all"
+      },
+      {
+        "date": "2026-06-23T17:23:07.512Z",
+        "subjectId": "engineer-ego",
+        "subjectName": "정보처理기사",
+        "score": 0,
+        "correct": 0,
+        "total": 5,
+        "elapsed": 15,
+        "passed": false,
+        "mode": "all"
+      },
+      {
+        "date": "2026-06-23T17:23:12.741Z",
+        "subjectId": "engineer-ego",
+        "subjectName": "정보처理기사",
+        "score": 0,
+        "correct": 0,
+        "total": 5,
+        "elapsed": 15,
+        "passed": false,
+        "mode": "all"
+      },
+      {
+        "date": "2026-06-23T17:23:46.370Z",
+        "subjectId": "engineer-ego",
+        "subjectName": "정보처理기사",
+        "score": 40,
+        "correct": 2,
+        "total": 5,
+        "elapsed": 9,
+        "passed": false,
+        "mode": "wrong"
+      },
+      {
+        "date": "2026-06-23T17:24:02.054Z",
+        "subjectId": "engineer-ego",
+        "subjectName": "정보처理기사",
+        "score": 0,
+        "correct": 0,
+        "total": 3,
+        "elapsed": 10,
+        "passed": false,
+        "mode": "wrong"
+      }
+    ]
+  }
+}
