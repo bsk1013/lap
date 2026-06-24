@@ -793,15 +793,14 @@ input, textarea { font-family: inherit; color: inherit; }
 .calc-overlay {
   position: fixed; inset: 0;
   z-index: 300;
-  pointer-events: none;
+  pointer-events: none; /* overlay itself never blocks — only popup does */
 }
-.calc-overlay.open { pointer-events: all; }
 
 .calc-popup {
   position: absolute;
   bottom: 80px; left: 50%;
   transform: translateX(-50%);
-  width: min(340px, calc(100vw - 24px));
+  width: min(300px, calc(100vw - 20px));
   background: var(--bg-secondary);
   border: 1px solid rgba(78,205,196,.2);
   border-radius: var(--radius-lg);
@@ -809,6 +808,7 @@ input, textarea { font-family: inherit; color: inherit; }
   overflow: hidden;
   display: none;
   user-select: none;
+  pointer-events: all; /* popup itself captures all events */
 }
 .calc-overlay.open .calc-popup { display: block; animation: calcPop 200ms ease; }
 @keyframes calcPop { from { opacity: 0; transform: translateX(-50%) scale(.95) translateY(10px); } to { opacity: 1; transform: translateX(-50%) scale(1) translateY(0); } }
@@ -845,14 +845,14 @@ input, textarea { font-family: inherit; color: inherit; }
 }
 
 .calc-display {
-  padding: 8px 14px 10px;
+  padding: 6px 12px 8px;
   background: var(--surface);
 }
 .calc-expr {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  min-height: 18px;
+  min-height: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -863,11 +863,11 @@ input, textarea { font-family: inherit; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
 }
 .calc-result {
   flex: 1;
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 800;
   font-family: var(--font-mono);
   text-align: right;
@@ -916,29 +916,30 @@ input, textarea { font-family: inherit; color: inherit; }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 2px;
-  padding: 4px;
+  padding: 3px;
   background: var(--bg-primary);
 }
 .calc-btn {
-  aspect-ratio: 1.2;
+  aspect-ratio: 1.3;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
-  border-radius: 6px;
+  border-radius: 5px;
   background: var(--bg-tertiary);
   color: var(--text-primary);
   transition: background var(--transition-fast), transform 80ms;
   font-family: var(--font-mono);
 }
 .calc-btn:active { transform: scale(.92); background: var(--surface); }
-.calc-btn.func { color: var(--accent); font-size: 12px; }
+.calc-btn.func { color: var(--accent); font-size: 11px; }
 .calc-btn.op { color: var(--warn); }
 .calc-btn.eq { background: var(--accent); color: #000; }
 .calc-btn.eq:active { background: var(--accent); filter: brightness(.9); }
 .calc-btn.del-btn { color: var(--danger); }
-.calc-btn.zero { grid-column: span 2; aspect-ratio: auto; padding: 0 8px; justify-content: flex-start; }
+.calc-btn.ac-btn  { color: var(--warn); }
+.calc-btn.zero { grid-column: span 2; aspect-ratio: auto; padding: 0 6px; justify-content: flex-start; }
 
 /* ═══════════════════════════════════════════
    TOAST
@@ -1087,6 +1088,115 @@ input, textarea { font-family: inherit; color: inherit; }
 .canvas-tool-btn:active { transform: scale(.96); }
 .canvas-tool-btn.active-tool { background: var(--info-dim); color: var(--info); border-color: rgba(108,99,255,.3); }
 .canvas-tool-btn.clear-btn { color: var(--danger); background: var(--danger-dim); border-color: rgba(255,107,107,.3); }
+.canvas-tool-btn.ocr-free-btn { color: var(--success); background: var(--success-dim, rgba(72,199,116,.12)); border-color: rgba(72,199,116,.3); }
+.canvas-tool-btn.ocr-ai-btn   { color: var(--accent);  background: var(--accent-dim,  rgba(108,99,255,.12)); border-color: rgba(108,99,255,.3); }
+.canvas-tool-btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+.ocr-status { font-size: 11px; color: var(--text-muted); width: 100%; margin-top: 2px; min-height: 16px; }
+
+/* ── 손글씨 메모 패널 ── */
+.memo-toggle-btn {
+  position: fixed;
+  right: 0;
+  bottom: 50%;
+  transform: translateY(50%);
+  z-index: 200;
+  writing-mode: vertical-rl;
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,.1);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  padding: 10px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  display: none; /* shown only when practical screen is active */
+}
+.memo-toggle-btn.visible { display: block; }
+.memo-toggle-btn.active  { background: var(--info-dim); color: var(--info); border-color: rgba(108,99,255,.3); }
+
+.memo-backdrop {
+  position: fixed; inset: 0;
+  z-index: 198;
+  display: none;
+}
+.memo-backdrop.open { display: block; }
+
+.memo-drawer {
+  position: fixed;
+  right: -280px;
+  top: 0; bottom: 0;
+  width: 272px;
+  z-index: 199;
+  background: var(--bg-secondary);
+  border-left: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  flex-direction: column;
+  transition: right 280ms cubic-bezier(.4,0,.2,1);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.memo-drawer.open { right: 0; }
+
+.memo-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 8px;
+  background: var(--surface);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.memo-drawer-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+.memo-drawer-actions { display: flex; gap: 6px; align-items: center; }
+.memo-clear-btn {
+  font-size: 11px; font-weight: 700;
+  color: var(--danger);
+  background: var(--danger-dim);
+  border: 1px solid rgba(255,107,107,.3);
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.memo-close-btn {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+}
+.memo-canvas-wrap {
+  flex: 1;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+.memo-canvas-wrap canvas {
+  width: 100%; height: 100%;
+  touch-action: none;
+  display: block;
+}
+.memo-tools {
+  display: flex;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--surface);
+  border-top: 1px solid rgba(255,255,255,.06);
+  flex-shrink: 0;
+}
+.memo-tool-btn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px; font-weight: 700;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255,255,255,.07);
+  transition: background var(--transition-fast);
+}
+.memo-tool-btn.active-tool { background: var(--info-dim); color: var(--info); border-color: rgba(108,99,255,.3); }
+.memo-size-wrap { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.memo-size-label { font-size: 10px; color: var(--text-muted); }
+.memo-size-slider { width: 60px; accent-color: var(--info); }
 .pen-size-wrap { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .pen-size-label { font-size: 11px; color: var(--text-muted); }
 .pen-size-slider { width: 80px; accent-color: var(--info); }
@@ -1391,6 +1501,12 @@ input, textarea { font-family: inherit; color: inherit; }
         </div>
       </div>
 
+      <!-- D-7 약점 배너 (JS에서 표시/숨김) -->
+      <div id="weakBanner" style="display:none;margin:0 0 12px;padding:12px 16px;background:var(--danger-dim);border:1px solid rgba(255,107,107,.3);border-radius:var(--radius-md);cursor:pointer">
+        <div style="font-size:13px;font-weight:800;color:var(--danger);margin-bottom:2px">🔥 시험 D-<span id="weakBannerDay">7</span> — 약점 집중 모드</div>
+        <div style="font-size:11px;color:var(--text-secondary)">자주 틀린 문제 <strong id="weakBannerCount">0</strong>개 · 지금 바로 집중 풀이 시작</div>
+      </div>
+
       <!-- Quick Actions -->
       <p class="section-title">빠른 시작</p>
       <div class="quick-actions">
@@ -1533,10 +1649,13 @@ input, textarea { font-family: inherit; color: inherit; }
             <button class="canvas-tool-btn active-tool" id="penTool">🖊 펜</button>
             <button class="canvas-tool-btn" id="eraserTool">⬜ 지우개</button>
             <button class="canvas-tool-btn clear-btn" id="clearCanvas">🗑 전체 지우기</button>
+            <button class="canvas-tool-btn ocr-free-btn" id="ocrFreeBtn">🆓 무료 OCR</button>
+            <button class="canvas-tool-btn ocr-ai-btn"   id="ocrAiBtn">🤖 AI OCR</button>
             <div class="pen-size-wrap">
               <span class="pen-size-label">굵기</span>
               <input type="range" class="pen-size-slider" id="penSize" min="2" max="20" value="4">
             </div>
+          <div class="ocr-status" id="ocrStatusLine"></div>
           </div>
         </div>
 
@@ -1906,6 +2025,30 @@ input, textarea { font-family: inherit; color: inherit; }
   </div>
 </div>
 
+<!-- ══════════ MEMO DRAWER ══════════ -->
+<button class="memo-toggle-btn" id="memoToggleBtn">📝 메모</button>
+<div class="memo-backdrop" id="memoBackdrop"></div>
+<div class="memo-drawer" id="memoDrawer">
+  <div class="memo-drawer-header">
+    <span class="memo-drawer-title">📝 손글씨 메모</span>
+    <div class="memo-drawer-actions">
+      <button class="memo-clear-btn" id="memoClearBtn">🗑 지우기</button>
+      <button class="memo-close-btn" id="memoCloseBtn">✕</button>
+    </div>
+  </div>
+  <div class="memo-canvas-wrap" id="memoCanvasWrap">
+    <canvas id="memoCanvas"></canvas>
+  </div>
+  <div class="memo-tools">
+    <button class="memo-tool-btn active-tool" id="memoPenBtn">🖊 펜</button>
+    <button class="memo-tool-btn" id="memoEraserBtn">⬜ 지우개</button>
+    <div class="memo-size-wrap">
+      <span class="memo-size-label">굵기</span>
+      <input type="range" class="memo-size-slider" id="memoPenSize" min="2" max="20" value="4">
+    </div>
+  </div>
+</div>
+
 <!-- ══════════ CALCULATOR POPUP ══════════ -->
 <div class="calc-overlay" id="calcOverlay">
   <div class="calc-popup" id="calcPopup">
@@ -1940,24 +2083,24 @@ input, textarea { font-family: inherit; color: inherit; }
       <button class="calc-btn" data-val="7">7</button>
       <button class="calc-btn" data-val="8">8</button>
       <button class="calc-btn" data-val="9">9</button>
-      <button class="calc-btn op" data-val="/">÷</button>
       <button class="calc-btn del-btn" id="calcDel">DEL</button>
+      <button class="calc-btn ac-btn"  id="calcAc">AC</button>
 
       <button class="calc-btn" data-val="4">4</button>
       <button class="calc-btn" data-val="5">5</button>
       <button class="calc-btn" data-val="6">6</button>
+      <button class="calc-btn op" data-val="/">÷</button>
       <button class="calc-btn op" data-val="*">×</button>
-      <button class="calc-btn func" data-val="e10">EXP</button>
 
       <button class="calc-btn" data-val="1">1</button>
       <button class="calc-btn" data-val="2">2</button>
       <button class="calc-btn" data-val="3">3</button>
       <button class="calc-btn op" data-val="-">−</button>
-      <button class="calc-btn func" data-val="neg">±</button>
+      <button class="calc-btn op" data-val="+">+</button>
 
       <button class="calc-btn zero" data-val="0">0</button>
       <button class="calc-btn" data-val=".">.</button>
-      <button class="calc-btn op" data-val="+">+</button>
+      <button class="calc-btn func" data-val="e10">EXP</button>
       <button class="calc-btn eq" id="calcEq">=</button>
     </div>
   </div>
@@ -2019,6 +2162,9 @@ input, textarea { font-family: inherit; color: inherit; }
         </label>
         <label style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--bg-tertiary);border-radius:8px;cursor:pointer">
           <input type="radio" name="cbtMode" value="wrong"> <span>오답 문제만</span>
+        </label>
+        <label style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--danger-dim);border-radius:8px;cursor:pointer;border:1px solid rgba(255,107,107,.2)">
+          <input type="radio" name="cbtMode" value="weak"> <span>🔥 약점 집중 <small style="color:var(--text-muted)">(2회 이상 오답)</small></span>
         </label>
       </div>
     </div>
@@ -2228,7 +2374,8 @@ const STATE = {
     studySessions: [],
     bookmarks: [],
     wrongAnswers: [],
-    examHistory: []
+    examHistory: [],
+    weakMap: {}   // qId → { wrongCount, lastWrong }
   },
   settings: {
     timer: true,
@@ -2279,7 +2426,10 @@ function load() {
     const data = JSON.parse(raw);
     if (data.subjects) STATE.subjects = data.subjects;
     if (data.questions) STATE.questions = data.questions;
-    if (data.userProgress) STATE.userProgress = data.userProgress;
+    if (data.userProgress) {
+      STATE.userProgress = data.userProgress;
+      if (!STATE.userProgress.weakMap) STATE.userProgress.weakMap = {};
+    }
     if (data.settings) STATE.settings = { ...STATE.settings, ...data.settings };
     if (data.selectedSubjectId) STATE.selectedSubjectId = data.selectedSubjectId;
     return true;
@@ -2319,6 +2469,17 @@ function navigateTo(screenId, title) {
     b.classList.toggle('active', b.dataset.screen === screenId);
   });
   document.getElementById('appMain').scrollTop = 0;
+
+  // 메모 버튼: 실기 화면에서만 표시, 다른 화면 이탈 시 드로어 닫기
+  const memoBtn = document.getElementById('memoToggleBtn');
+  if (memoBtn) {
+    if (screenId === 'practicalScreen') {
+      memoBtn.classList.add('visible');
+    } else {
+      memoBtn.classList.remove('visible');
+      closeMemoDrawer();
+    }
+  }
 }
 
 /* ──────────────────────────────────
@@ -2345,6 +2506,17 @@ function renderDday() {
   document.getElementById('ddayNumber').textContent = diff > 0 ? `D-${diff}` : diff === 0 ? 'D-DAY' : `D+${Math.abs(diff)}`;
   document.getElementById('ddaySub').textContent = exam.toLocaleDateString('ko-KR', {year:'numeric',month:'long',day:'numeric',weekday:'short'});
   document.getElementById('ddaySettingVal').textContent = `${dday.subject} · ${dday.date}`;
+
+  // D-7 약점 배너
+  const banner = document.getElementById('weakBanner');
+  if (banner && diff >= 0 && diff <= 7) {
+    const weakCount = Object.values(STATE.userProgress.weakMap).filter(v => v.wrongCount >= 2).length;
+    document.getElementById('weakBannerDay').textContent = diff;
+    document.getElementById('weakBannerCount').textContent = weakCount;
+    banner.style.display = weakCount > 0 ? 'block' : 'none';
+  } else if (banner) {
+    banner.style.display = 'none';
+  }
 }
 
 function renderSubjectGrid() {
@@ -2434,6 +2606,11 @@ function startCBT(subjectId, mode, count, timeLimitMin) {
     const wrongIds = new Set(STATE.userProgress.wrongAnswers.map(w => w.qId));
     pool = pool.filter(q => wrongIds.has(q.id));
     if (!pool.length) { toast('오답 문제가 없습니다'); return; }
+  } else if (mode === 'weak') {
+    const wm = STATE.userProgress.weakMap;
+    pool = pool.filter(q => (wm[q.id]?.wrongCount || 0) >= 2);
+    pool.sort((a, b) => (wm[b.id]?.wrongCount || 0) - (wm[a.id]?.wrongCount || 0));
+    if (!pool.length) { toast('약점 문제가 없습니다 (2회 이상 오답 필요)'); return; }
   }
 
   if (mode === 'random' || STATE.settings.shuffle) {
@@ -2480,7 +2657,9 @@ function renderCBTQuestion() {
     ...(q.tags||[]).slice(0,2).map(t=>`<span class="q-tag">${t}</span>`)
   ].join('');
   document.getElementById('questionTags').innerHTML = tags;
-  document.getElementById('questionNum').textContent = `문제 ${q.number||idx+1}번`;
+  const wc = STATE.userProgress.weakMap[q.id]?.wrongCount || 0;
+  const weakBadge = wc >= 2 ? ` <span style="font-size:11px;color:var(--danger);font-weight:700">🔥×${wc}</span>` : wc === 1 ? ` <span style="font-size:11px;color:var(--warn);font-weight:700">⚠️×1</span>` : '';
+  document.getElementById('questionNum').innerHTML = `문제 ${q.number||idx+1}번${weakBadge}`;
   document.getElementById('questionText').textContent = q.questionText;
 
   // Image
@@ -2645,13 +2824,18 @@ function finishExam() {
   const elapsed = cbt.elapsedSeconds;
   const m = Math.floor(elapsed/60), s = elapsed%60;
 
-  // Update wrong answers (deduplicate)
+  // Update wrong answers (deduplicate) + weakMap
   wrongNow.forEach(w => {
     const existing = STATE.userProgress.wrongAnswers.findIndex(x => x.qId === w.qId);
     if (existing >= 0) STATE.userProgress.wrongAnswers[existing] = w;
     else STATE.userProgress.wrongAnswers.push(w);
+    // weakMap: increment wrong count
+    const wm = STATE.userProgress.weakMap;
+    if (!wm[w.qId]) wm[w.qId] = { wrongCount: 0, lastWrong: '' };
+    wm[w.qId].wrongCount++;
+    wm[w.qId].lastWrong = w.date;
   });
-  // Remove from wrong if now correct
+  // Remove from wrong if now correct (weakMap count preserved intentionally)
   cbt.questions.forEach((q, i) => {
     if (cbt.answers[i] === q.correctAnswer) {
       const idx = STATE.userProgress.wrongAnswers.findIndex(x => x.qId === q.id);
@@ -2942,6 +3126,20 @@ function bindEvents() {
   // Home quick buttons
   document.getElementById('quickWritten').addEventListener('click', openCBTModeModal);
   document.getElementById('quickPractical').addEventListener('click', openPracModeModal);
+  document.getElementById('weakBanner').addEventListener('click', () => {
+    const sid = STATE.selectedSubjectId || STATE.subjects[0]?.id;
+    if (!sid) { toast('종목을 먼저 선택하세요'); return; }
+    // 필기 약점 문제가 있으면 필기, 없으면 실기로 분기
+    const wm = STATE.userProgress.weakMap;
+    const hasWrittenWeak = STATE.questions.some(q => q.subjectId === sid && q.examType === 'written' && (wm[q.id]?.wrongCount||0) >= 2);
+    if (hasWrittenWeak) {
+      openCBTModeModal();
+      setTimeout(() => { const r = document.querySelector('input[name="cbtMode"][value="weak"]'); if (r) r.checked = true; }, 100);
+    } else {
+      openPracModeModal();
+      setTimeout(() => { const r = document.querySelector('input[name="cbtMode"][value="weak"]'); if (r) r.checked = true; }, 100);
+    }
+  });
 
   // Home tabs
   document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -3002,6 +3200,7 @@ function bindEvents() {
   });
   document.getElementById('calcEq').addEventListener('click', calcEval);
   document.getElementById('calcDel').addEventListener('click', calcDel);
+  document.getElementById('calcAc').addEventListener('click', calcClear);
   document.getElementById('calcResult').addEventListener('dblclick', calcClear);
 
   document.getElementById('calcDegToggle').addEventListener('click', () => {
@@ -3237,6 +3436,11 @@ function startPractical(subjectId, mode, count, timeLimitMin) {
     const wrongIds = new Set(STATE.userProgress.wrongAnswers.map(w => w.qId));
     pool = pool.filter(q => wrongIds.has(q.id));
     if (!pool.length) { toast('오답 실기 문제가 없습니다'); return; }
+  } else if (mode === 'weak') {
+    const wm = STATE.userProgress.weakMap;
+    pool = pool.filter(q => (wm[q.id]?.wrongCount || 0) >= 2);
+    pool.sort((a, b) => (wm[b.id]?.wrongCount || 0) - (wm[a.id]?.wrongCount || 0));
+    if (!pool.length) { toast('약점 실기 문제가 없습니다 (2회 이상 오답 필요)'); return; }
   }
   pool = pool.slice(0, Math.min(count, pool.length));
 
@@ -3267,7 +3471,9 @@ function renderPracQuestion() {
     q.year     ? `<span class="q-tag">${q.year}년 ${q.session || ''}회</span>` : ''
   ].join('');
   document.getElementById('pracQuestionTags').innerHTML = tags;
-  document.getElementById('pracQuestionNum').textContent  = `문제 ${q.number || idx + 1}번`;
+  const pwc = STATE.userProgress.weakMap[q.id]?.wrongCount || 0;
+  const pWeakBadge = pwc >= 2 ? ` <span style="font-size:11px;color:var(--danger);font-weight:700">🔥×${pwc}</span>` : pwc === 1 ? ` <span style="font-size:11px;color:var(--warn);font-weight:700">⚠️×1</span>` : '';
+  document.getElementById('pracQuestionNum').innerHTML = `문제 ${q.number || idx + 1}번${pWeakBadge}`;
   document.getElementById('pracQuestionText').textContent = q.questionText;
 
   const img = document.getElementById('pracQuestionImg');
@@ -3441,12 +3647,16 @@ function finishPractical() {
     else if (a.verdict === 'partial') partial++;
     else wrong++;
 
-    // wrong answers tracking
+    // wrong answers tracking + weakMap
     if (!a || a.verdict === 'wrong') {
       const existing = STATE.userProgress.wrongAnswers.findIndex(x => x.qId === q.id);
       const entry = { qId: q.id, userAns: a?.text || '', correctAns: (q.correctAnswers||[])[0]||'', date: new Date().toISOString() };
       if (existing >= 0) STATE.userProgress.wrongAnswers[existing] = entry;
       else STATE.userProgress.wrongAnswers.push(entry);
+      const wm = STATE.userProgress.weakMap;
+      if (!wm[q.id]) wm[q.id] = { wrongCount: 0, lastWrong: '' };
+      wm[q.id].wrongCount++;
+      wm[q.id].lastWrong = entry.date;
     } else if (a?.verdict === 'correct') {
       STATE.userProgress.wrongAnswers = STATE.userProgress.wrongAnswers.filter(x => x.qId !== q.id);
     }
@@ -3601,6 +3811,196 @@ function restoreCanvas(dataUrl) {
   img.src = dataUrl;
 }
 
+/* ── Phase 5 OCR Demo ──────────────────────────────────── */
+function setOcrStatus(msg) {
+  const el = document.getElementById('ocrStatusLine');
+  if (el) el.textContent = msg;
+}
+
+function fillOcrResult(text) {
+  const cleaned = text.trim().replace(/\s+/g, ' ');
+  if (!cleaned) { setOcrStatus('❗ 텍스트를 인식하지 못했습니다'); return; }
+  const input = document.getElementById('pracTextInput');
+  input.value = cleaned;
+  setOcrStatus(`✅ 인식 완료: "${cleaned}"`);
+  captureAndJudge();
+}
+
+// ── 무료 OCR: Tesseract.js (CDN, 브라우저 실행) ──
+async function ocrWithTesseract() {
+  if (isCanvasBlank()) { toast('캔버스에 글씨를 먼저 써주세요'); return; }
+  const btn = document.getElementById('ocrFreeBtn');
+  btn.disabled = true;
+  setOcrStatus('⏳ Tesseract.js 로드 중...');
+
+  try {
+    if (!window.Tesseract) {
+      await new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+        s.onload = resolve; s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+    setOcrStatus('🔍 손글씨 인식 중...');
+    const dataUrl = DRAW.canvas.toDataURL('image/png');
+    const result = await Tesseract.recognize(dataUrl, 'kor+eng', {
+      logger: m => { if (m.status === 'recognizing text') setOcrStatus(`🔍 인식 중... ${Math.round((m.progress||0)*100)}%`); }
+    });
+    fillOcrResult(result.data.text);
+  } catch (e) {
+    setOcrStatus('❌ Tesseract 오류: ' + (e.message || e));
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── 유료 OCR: Claude Vision API ──
+async function ocrWithClaude() {
+  if (isCanvasBlank()) { toast('캔버스에 글씨를 먼저 써주세요'); return; }
+  const apiKey = localStorage.getItem('lap_claude_key') || '';
+  if (!apiKey) { toast('설정에서 Claude API Key를 먼저 입력하세요 🔑'); return; }
+
+  const btn = document.getElementById('ocrAiBtn');
+  btn.disabled = true;
+  setOcrStatus('🤖 Claude Vision 인식 중...');
+
+  try {
+    const dataUrl = DRAW.canvas.toDataURL('image/png');
+    const base64  = dataUrl.split(',')[1];
+
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5',
+        max_tokens: 64,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: 'image/png', data: base64 } },
+            { type: 'text',  text: '이 손글씨 이미지에 적힌 텍스트만 정확히 읽어서 출력하세요. 설명 없이 텍스트만.' }
+          ]
+        }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err?.error?.message || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+    fillOcrResult(data.content?.[0]?.text || '');
+  } catch (e) {
+    setOcrStatus('❌ Claude API 오류: ' + (e.message || e));
+  } finally {
+    btn.disabled = false;
+  }
+}
+/* ── /Phase 5 OCR Demo ─────────────────────────────────── */
+
+/* ── 손글씨 메모 패널 ──────────────────────────────────── */
+const MEMO = { ctx: null, canvas: null, isDrawing: false, mode: 'pen', penSize: 4, lastX: 0, lastY: 0 };
+
+function initMemoCanvas() {
+  const canvas = document.getElementById('memoCanvas');
+  if (!canvas) return;
+  MEMO.canvas = canvas;
+  MEMO.ctx    = canvas.getContext('2d');
+
+  function resize() {
+    const wrap = document.getElementById('memoCanvasWrap');
+    const dpr  = window.devicePixelRatio || 1;
+    const w = wrap.offsetWidth, h = wrap.offsetHeight;
+    canvas.width  = w * dpr;
+    canvas.height = h * dpr;
+    canvas.style.width  = w + 'px';
+    canvas.style.height = h + 'px';
+    MEMO.ctx.scale(dpr, dpr);
+    MEMO.ctx.fillStyle = '#ffffff';
+    MEMO.ctx.fillRect(0, 0, w, h);
+    MEMO.ctx.lineJoin = 'round';
+    MEMO.ctx.lineCap  = 'round';
+  }
+  resize();
+  new ResizeObserver(resize).observe(document.getElementById('memoCanvasWrap'));
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const src  = e.touches ? e.touches[0] : e;
+    return { x: (src.clientX - rect.left), y: (src.clientY - rect.top) };
+  }
+
+  canvas.addEventListener('pointerdown', e => {
+    canvas.setPointerCapture(e.pointerId);
+    MEMO.isDrawing = true;
+    const pos = getPos(e);
+    MEMO.lastX = pos.x; MEMO.lastY = pos.y;
+    MEMO.ctx.beginPath();
+    MEMO.ctx.arc(pos.x, pos.y, (MEMO.mode === 'eraser' ? MEMO.penSize * 4 : MEMO.penSize * 0.6) / 2, 0, Math.PI * 2);
+    MEMO.ctx.fillStyle = MEMO.mode === 'eraser' ? '#ffffff' : '#1a1a2e';
+    MEMO.ctx.fill();
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!MEMO.isDrawing) return;
+    const pos = getPos(e);
+    const ctx = MEMO.ctx;
+    ctx.strokeStyle = MEMO.mode === 'eraser' ? '#ffffff' : '#1a1a2e';
+    ctx.lineWidth   = MEMO.mode === 'eraser' ? MEMO.penSize * 4 : MEMO.penSize * (0.6 + (e.pressure || 0.5) * 0.8);
+    ctx.beginPath();
+    ctx.moveTo(MEMO.lastX, MEMO.lastY);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    MEMO.lastX = pos.x; MEMO.lastY = pos.y;
+  });
+  canvas.addEventListener('pointerup', () => { MEMO.isDrawing = false; });
+}
+
+function openMemoDrawer() {
+  document.getElementById('memoDrawer').classList.add('open');
+  document.getElementById('memoBackdrop').classList.add('open');
+  document.getElementById('memoToggleBtn').classList.add('active');
+  requestAnimationFrame(() => { if (!MEMO.ctx) initMemoCanvas(); });
+}
+function closeMemoDrawer() {
+  document.getElementById('memoDrawer').classList.remove('open');
+  document.getElementById('memoBackdrop').classList.remove('open');
+  document.getElementById('memoToggleBtn').classList.remove('active');
+}
+function toggleMemoDrawer() {
+  document.getElementById('memoDrawer').classList.contains('open') ? closeMemoDrawer() : openMemoDrawer();
+}
+function clearMemoCanvas() {
+  if (!MEMO.ctx || !MEMO.canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  MEMO.ctx.fillStyle = '#ffffff';
+  MEMO.ctx.fillRect(0, 0, MEMO.canvas.width / dpr, MEMO.canvas.height / dpr);
+}
+
+function bindMemoEvents() {
+  document.getElementById('memoToggleBtn').addEventListener('click', toggleMemoDrawer);
+  document.getElementById('memoBackdrop').addEventListener('click', closeMemoDrawer);
+  document.getElementById('memoCloseBtn').addEventListener('click', closeMemoDrawer);
+  document.getElementById('memoClearBtn').addEventListener('click', clearMemoCanvas);
+  document.getElementById('memoPenBtn').addEventListener('click', () => {
+    MEMO.mode = 'pen';
+    document.getElementById('memoPenBtn').classList.add('active-tool');
+    document.getElementById('memoEraserBtn').classList.remove('active-tool');
+  });
+  document.getElementById('memoEraserBtn').addEventListener('click', () => {
+    MEMO.mode = 'eraser';
+    document.getElementById('memoEraserBtn').classList.add('active-tool');
+    document.getElementById('memoPenBtn').classList.remove('active-tool');
+  });
+  document.getElementById('memoPenSize').addEventListener('input', e => { MEMO.penSize = parseInt(e.target.value); });
+}
+/* ── /손글씨 메모 패널 ─────────────────────────────────── */
+
 function isCanvasBlank() {
   if (!DRAW.canvas) return true;
   const data = DRAW.ctx.getImageData(0, 0, DRAW.canvas.width, DRAW.canvas.height).data;
@@ -3639,6 +4039,8 @@ function bindPracticalEvents() {
   });
   document.getElementById('clearCanvas').addEventListener('click', () => clearCanvas(true));
   document.getElementById('penSize').addEventListener('input', e => { DRAW.penSize = parseInt(e.target.value); });
+  document.getElementById('ocrFreeBtn').addEventListener('click', ocrWithTesseract);
+  document.getElementById('ocrAiBtn').addEventListener('click', ocrWithClaude);
 
   // text input — judge on blur / enter
   document.getElementById('pracTextInput').addEventListener('blur', captureAndJudge);
@@ -3700,6 +4102,16 @@ function updatePracQListGrid() {
 const CHANGELOG_KEY = 'lap_changelog';
 
 const DEFAULT_CHANGELOG = [
+  {
+    version: 'v1.3.4',
+    date: '2026-06-24',
+    content: '• 🔥 약점 문제 시스템 — 2회 이상 오답 문제 weakMap 누적 추적\n• CBT/실기 시작 모달에 약점 집중 모드 추가 (오답 횟수 많은 순 정렬)\n• 문제 화면 약점 뱃지 표시 — 🔥×N (2회+) / ⚠️×1 (1회)\n• D-7 홈 배너 — 시험 7일 이내 약점 문제 수 표시 + 클릭 시 즉시 시작\n• 계산기 ± 버튼 제거, = 버튼 마지막 배치\n• 메모 드로어 외부 클릭 시 닫기 (backdrop 추가)'
+  },
+  {
+    version: 'v1.3.3',
+    date: '2026-06-24',
+    content: '• 📝 손글씨 메모 패널 추가 — 실기 화면 우측 슬라이드 드로어 (채점과 완전 분리)\n• 계산기 오버레이 터치 투과 수정 — 계산기 뒤 배경 스와이프 정상 동작\n• 계산기 모바일 소형화 — 폭 300px·버튼 축소·디스플레이 22px\n• 계산기 AC(전체 초기화) 버튼 추가, 버튼 배치 재구성\n• Phase 5 OCR 데모 추가 — 🆓 Tesseract.js / 🤖 Claude Vision API'
+  },
   {
     version: 'v1.3.1',
     date: '2026-06-24',
@@ -4646,6 +5058,7 @@ document.addEventListener('DOMContentLoaded', () => {
   bindChangelogEvents();
   bindAdminEvents();
   bindPracticalEvents();
+  bindMemoEvents();
   renderHome();
 
   // Init version label from changelog
