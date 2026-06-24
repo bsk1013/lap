@@ -1376,6 +1376,37 @@ input, textarea { font-family: inherit; color: inherit; }
 
 /* Vision parser */
 .vision-api-box { background: var(--bg-secondary); border: 1px solid rgba(108,99,255,.2); border-radius: var(--radius-md); padding: 14px; margin-bottom: 14px; }
+
+/* 클립보드 붙여넣기 힌트 */
+.paste-hint-box {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--info-dim); border: 1px dashed rgba(108,99,255,.4);
+  border-radius: var(--radius-sm); padding: 10px 12px; margin-bottom: 10px;
+  animation: pulseBorder 2.5s ease-in-out infinite;
+}
+@keyframes pulseBorder {
+  0%,100% { border-color: rgba(108,99,255,.4); }
+  50%      { border-color: rgba(108,99,255,.9); }
+}
+.paste-hint-icon { font-size: 22px; flex-shrink: 0; }
+
+/* 이미지 프리뷰 */
+.paste-preview-box {
+  background: var(--bg-secondary); border: 1px solid rgba(108,99,255,.3);
+  border-radius: var(--radius-md); padding: 12px; margin-bottom: 10px;
+}
+
+/* 실기 문제 카드 — correctAnswers 배열 */
+.pq-answer-row {
+  display: flex; gap: 6px; align-items: flex-start; margin-bottom: 4px;
+}
+.pq-answer-idx {
+  flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--info-dim); color: var(--info);
+  font-size: 10px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 6px;
+}
 .vision-api-label { font-size: 11px; font-weight: 700; color: var(--info); letter-spacing: .5px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
 .vision-api-input { width: 100%; background: var(--bg-tertiary); border: 1px solid rgba(255,255,255,.08); border-radius: 6px; padding: 10px 12px; font-size: 13px; font-family: var(--font-mono); color: var(--text-primary); outline: none; }
 .vision-api-input:focus { border-color: var(--info); }
@@ -1872,10 +1903,28 @@ input, textarea { font-family: inherit; color: inherit; }
           </div>
         </div>
 
+        <!-- 클립보드 붙여넣기 안내 -->
+        <div class="paste-hint-box" id="pasteHintBox">
+          <span class="paste-hint-icon">📋</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--info)">Ctrl+V 붙여넣기로 즉시 분석</div>
+            <div style="font-size:11px;color:var(--text-muted);margin-top:1px">교재 캡처 · 스크린샷 · 카메라 사진 모두 OK</div>
+          </div>
+        </div>
+
+        <!-- 이미지 프리뷰 -->
+        <div class="paste-preview-box hidden" id="pastePreviewBox">
+          <img id="pastePreviewImg" src="" alt="미리보기" style="max-width:100%;border-radius:6px;display:block">
+          <div style="display:flex;gap:6px;margin-top:8px">
+            <button class="admin-btn admin-btn-primary" id="pasteAnalyzeBtn" style="flex:1">🤖 이 이미지 분석</button>
+            <button class="admin-btn admin-btn-secondary" id="pasteClearBtn">✕ 취소</button>
+          </div>
+        </div>
+
         <div class="upload-zone" id="visionDropZone">
-          <input type="file" id="visionFileInput" accept=".pdf,.png,.jpg,.jpeg">
+          <input type="file" id="visionFileInput" accept=".pdf,.png,.jpg,.jpeg,.webp">
           <div class="upload-icon">🤖</div>
-          <div class="upload-title">PDF 또는 이미지 드래그 · 탭</div>
+          <div class="upload-title">PDF · 이미지 드래그 · 탭 · Ctrl+V</div>
           <div class="upload-sub">Claude Vision이 문제·보기·정답·해설을 자동 구조화</div>
         </div>
 
@@ -4103,6 +4152,11 @@ const CHANGELOG_KEY = 'lap_changelog';
 
 const DEFAULT_CHANGELOG = [
   {
+    version: 'v1.3.5',
+    date: '2026-06-24',
+    content: '• 🤖 실기 스마트 임포트 — Ctrl+V 클립보드 붙여넣기로 교재 캡처 즉시 분석\n• 실기 전용 Claude 프롬프트 — 소문항 자동 분리, 표 텍스트화, correctAnswers[] 배열 추출\n• 이미지 프리뷰 패널 — 분석 전 미리보기 후 확인\n• 다중 이미지 누적 — 여러 장 붙여넣어도 문제 누적 저장\n• 실기 문제 카드 정답 배열 편집 UI (추가/삭제)\n• claude-haiku-4-5 모델 업그레이드, max_tokens 8192'
+  },
+  {
     version: 'v1.3.4',
     date: '2026-06-24',
     content: '• 🔥 약점 문제 시스템 — 2회 이상 오답 문제 weakMap 누적 추적\n• CBT/실기 시작 모달에 약점 집중 모드 추가 (오답 횟수 많은 순 정렬)\n• 문제 화면 약점 뱃지 표시 — 🔥×N (2회+) / ⚠️×1 (1회)\n• D-7 홈 배너 — 시험 7일 이내 약점 문제 수 표시 + 클릭 시 즉시 시작\n• 계산기 ± 버튼 제거, = 버튼 마지막 배치\n• 메모 드로어 외부 클릭 시 닫기 (backdrop 추가)'
@@ -4297,6 +4351,40 @@ function bindAdminEvents() {
     toast('✅ 전체 확정 — [저장]으로 문제은행에 추가하세요');
   });
 
+  // ── 클립보드 붙여넣기 (Ctrl+V) ──
+  let _pasteFile = null;
+  document.addEventListener('paste', async (e) => {
+    if (document.getElementById('adminVisionTab').classList.contains('hidden')) return;
+    const items = [...(e.clipboardData?.items || [])];
+    const imgItem = items.find(i => i.type.startsWith('image/'));
+    if (!imgItem) return;
+    e.preventDefault();
+    _pasteFile = imgItem.getAsFile();
+    if (!_pasteFile) return;
+    // 프리뷰 표시
+    const reader = new FileReader();
+    reader.onload = ev => {
+      document.getElementById('pastePreviewImg').src = ev.target.result;
+      document.getElementById('pastePreviewBox').classList.remove('hidden');
+      document.getElementById('visionDropZone').style.display = 'none';
+    };
+    reader.readAsDataURL(_pasteFile);
+  });
+
+  document.getElementById('pasteAnalyzeBtn').addEventListener('click', async () => {
+    if (!_pasteFile) return;
+    document.getElementById('pastePreviewBox').classList.add('hidden');
+    document.getElementById('visionDropZone').style.display = '';
+    await handleFileForVision(_pasteFile);
+    _pasteFile = null;
+  });
+
+  document.getElementById('pasteClearBtn').addEventListener('click', () => {
+    _pasteFile = null;
+    document.getElementById('pastePreviewBox').classList.add('hidden');
+    document.getElementById('visionDropZone').style.display = '';
+  });
+
   // Vision API key
   document.getElementById('visionApiSave').addEventListener('click', () => {
     const key = document.getElementById('visionApiKey').value.trim();
@@ -4471,11 +4559,16 @@ async function visionParsePDF(file, key) {
 
 async function visionParseImage(file, key, p, total) {
   const reader = new FileReader();
-  const base64 = await new Promise(r => { reader.onload = e => r(e.target.result.split(',')[1]); reader.readAsDataURL(file); });
+  const dataUrl = await new Promise(r => { reader.onload = e => r(e.target.result); reader.readAsDataURL(file); });
+  const base64 = dataUrl.split(',')[1];
+  // 미디어타입 감지
+  _visionMediaType = file.type && file.type.startsWith('image/') ? file.type : 'image/jpeg';
   updateVisionStatus('AI 분석 중...', 30);
   try {
     const questions = await callClaudeVision(base64, key, p, total);
-    visionFinish(questions);
+    // 누적 모드: 기존 결과에 추가
+    visionParsedQuestions.push(...questions);
+    visionFinish(visionParsedQuestions);
   } catch(e) {
     updateVisionStatus('❌ 실패: ' + e.message, 0);
     toast('Vision 파싱 실패: ' + e.message);
@@ -4483,26 +4576,51 @@ async function visionParseImage(file, key, p, total) {
 }
 
 async function callClaudeVision(base64, key, pageNum, totalPages) {
-  const examTypeLabel = engineExamType === 'practical' ? '실기(단답형·서술형)' : '필기(4지선다·5지선다)';
-  const prompt = `이 자격증 시험지 이미지(${pageNum}/${totalPages}페이지)에서 ${examTypeLabel} 문제를 모두 추출하세요.
+  const isPractical = engineExamType === 'practical';
+  const pageInfo = totalPages > 1 ? `(${pageNum}/${totalPages}페이지)` : '';
 
-반드시 아래 JSON 배열 형식으로만 응답하세요. 설명 없이 JSON만 출력하세요:
-[
-  {
-    "number": 1,
-    "questionText": "문제 내용",
-    "choices": [{"index":1,"text":"보기1"},{"index":2,"text":"보기2"},{"index":3,"text":"보기3"},{"index":4,"text":"보기4"}],
-    "correctAnswer": 2,
-    "explanation": "해설 내용 (없으면 빈 문자열)",
-    "category": "과목명 (알 수 없으면 빈 문자열)"
-  }
-]
+  const prompt = isPractical ? `이 이미지${pageInfo}에서 실기 시험 문제를 모두 추출하세요.
+
+핵심 규칙:
+1. 하나의 문제에 소문항(1. 2. 3. 또는 가. 나. 다.)이 있으면 소문항마다 별도 객체로 분리
+2. 표(table)는 "항목A|값1|값2|값3 / 항목B|값4|값5|값6" 형태 텍스트로 변환하여 questionText에 포함
+3. correctAnswers는 정답(계산 결과 포함)을 배열로 — 동의어/단위 변형도 여러 개 넣기
+4. explanation에는 전체 풀이과정(공식·계산식) 포함
+5. 문제가 없으면 빈 배열 []
+
+JSON 배열만 출력 (설명 없이):
+[{
+  "number": "45-1",
+  "questionText": "[45번 공통] 5개 공정 작업시간: 공정1|20초 / 공정2|10초 / 공정3|15초 / 공정4|13초 / 공정5|8초\\n\\n1. 주기시간을 구하시오.",
+  "correctAnswers": ["20초", "20s", "20"],
+  "explanation": "주기시간 = 가장 긴 작업시간 = 20초",
+  "category": "라인 밸런싱"
+}, {
+  "number": "45-2",
+  "questionText": "[45번 공통] 5개 공정 작업시간: 공정1|20초 / 공정2|10초 / 공정3|15초 / 공정4|13초 / 공정5|8초\\n\\n2. 시간당 생산량을 구하시오.",
+  "correctAnswers": ["180개", "180"],
+  "explanation": "시간당 생산량 = 3600초 ÷ 주기시간(20초) = 180개",
+  "category": "라인 밸런싱"
+}]` :
+`이 자격증 시험지 이미지${pageInfo}에서 필기(4지선다·5지선다) 문제를 모두 추출하세요.
+
+JSON 배열만 출력 (설명 없이):
+[{
+  "number": 1,
+  "questionText": "문제 내용",
+  "choices": [{"index":1,"text":"보기1"},{"index":2,"text":"보기2"},{"index":3,"text":"보기3"},{"index":4,"text":"보기4"}],
+  "correctAnswer": 2,
+  "explanation": "해설 내용 (없으면 빈 문자열)",
+  "category": "과목명"
+}]
 
 규칙:
-- 문제가 없으면 빈 배열 [] 반환
-- 실기 문제면 choices는 빈 배열, correctAnswer는 null, explanation에 정답 포함
-- 해설이 문제지에 있으면 포함, 없으면 빈 문자열
-- 페이지 번호·헤더·푸터·광고는 제외`;
+- 문제가 없으면 빈 배열 []
+- 해설이 있으면 포함, 없으면 빈 문자열
+- 페이지 번호·헤더·푸터 제외`;
+
+  // 미디어타입 자동 감지 (PNG/JPEG/WEBP/GIF)
+  const mediaType = _visionMediaType || 'image/jpeg';
 
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
@@ -4513,12 +4631,12 @@ async function callClaudeVision(base64, key, pageNum, totalPages) {
       'anthropic-dangerous-direct-browser-access': 'true'
     },
     body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 4096,
+      model: 'claude-haiku-4-5',
+      max_tokens: 8192,
       messages: [{
         role: 'user',
         content: [
-          { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: base64 } },
+          { type: 'image', source: { type: 'base64', media_type: mediaType, data: base64 } },
           { type: 'text', text: prompt }
         ]
       }]
@@ -4536,20 +4654,33 @@ async function callClaudeVision(base64, key, pageNum, totalPages) {
   if (!jsonMatch) return [];
 
   const parsed = JSON.parse(jsonMatch[0]);
-  return parsed.map(q => ({
-    id: 'q-vision-' + Date.now() + '-' + Math.random().toString(36).slice(2,6),
-    subjectId: STATE.selectedSubjectId || STATE.subjects[0]?.id || 'unknown',
-    examType: engineExamType,
-    number: q.number,
-    questionText: q.questionText || '',
-    choices: q.choices || [],
-    correctAnswer: q.correctAnswer || null,
-    correctAnswers: q.correctAnswers || [],
-    explanation: q.explanation || '',
-    category: q.category || '',
-    tags: []
-  }));
+  const isPractical = engineExamType === 'practical';
+  return parsed.map(q => {
+    const id = 'q-vision-' + Date.now() + '-' + Math.random().toString(36).slice(2,6);
+    const base = {
+      id,
+      subjectId: STATE.selectedSubjectId || STATE.subjects[0]?.id || 'unknown',
+      examType: engineExamType,
+      number: q.number,
+      questionText: q.questionText || '',
+      choices: q.choices || [],
+      correctAnswer: q.correctAnswer ?? null,
+      correctAnswers: q.correctAnswers || [],
+      explanation: q.explanation || '',
+      category: q.category || '',
+      tags: []
+    };
+    // 실기: correctAnswer가 텍스트로 온 경우 correctAnswers에 병합
+    if (isPractical && base.correctAnswer && typeof base.correctAnswer === 'string') {
+      if (!base.correctAnswers.includes(base.correctAnswer)) base.correctAnswers.unshift(base.correctAnswer);
+      base.correctAnswer = null;
+    }
+    return base;
+  });
 }
+
+// 현재 처리 중인 이미지 미디어타입 (전역 임시값)
+let _visionMediaType = 'image/jpeg';
 
 let visionParsedQuestions = [];
 
@@ -4603,11 +4734,26 @@ function renderParsedQuestionsInto(list, containerId) {
         <input class="pq-input" data-pf="category" data-pi="${i}" data-cid="${containerId}" value="${q.category||''}">
       </div>
       ${q.choices?.length ? `<div class="pq-field"><div class="pq-label">보기</div><div class="pq-choices">${q.choices.map(c=>`<div class="pq-choice-row"><span class="pq-choice-label">${['①','②','③','④','⑤'][c.index-1]||c.index}</span><input class="pq-input" data-pf="choice" data-pi="${i}" data-ci="${c.index}" data-cid="${containerId}" value="${c.text}"></div>`).join('')}</div></div>` : ''}
+      ${q.examType==='practical' ? `
       <div class="pq-field">
-        <div class="pq-label">${q.examType==='practical'?'정답 텍스트':'정답 번호 (1~5)'}</div>
+        <div class="pq-label" style="display:flex;align-items:center;justify-content:space-between">
+          <span>정답 목록</span>
+          <button class="pq-btn" style="padding:2px 8px;font-size:10px" data-addans="${i}" data-cid="${containerId}">+ 추가</button>
+        </div>
+        <div id="pq-ans-list-${containerId}-${i}">
+          ${(q.correctAnswers||[]).map((a,ai)=>`
+          <div class="pq-answer-row">
+            <span class="pq-answer-idx">${ai+1}</span>
+            <input class="pq-input" style="flex:1" data-pf="correctAnswers" data-pi="${i}" data-ai="${ai}" data-cid="${containerId}" value="${a}">
+            <button class="pq-btn" style="padding:2px 6px;font-size:10px;color:var(--danger);flex-shrink:0" data-delans="${ai}" data-pi="${i}" data-cid="${containerId}">✕</button>
+          </div>`).join('')}
+        </div>
+      </div>` : `
+      <div class="pq-field">
+        <div class="pq-label">정답 번호 (1~5)</div>
         <input class="pq-input" data-pf="correctAnswer" data-pi="${i}" data-cid="${containerId}" value="${q.correctAnswer||''}">
-      </div>
-      ${q.explanation ? `<div class="pq-field"><div class="pq-label">해설</div><textarea class="pq-textarea" data-pf="explanation" data-pi="${i}" data-cid="${containerId}">${q.explanation}</textarea></div>` : ''}
+      </div>`}
+      ${q.explanation ? `<div class="pq-field"><div class="pq-label">풀이 / 해설</div><textarea class="pq-textarea" data-pf="explanation" data-pi="${i}" data-cid="${containerId}">${q.explanation}</textarea></div>` : ''}
       <div class="pq-actions">
         <button class="pq-btn pq-btn-confirm" data-pi="${i}" data-cid="${containerId}">✅ 확정</button>
         <button class="pq-btn pq-btn-delete" data-pi="${i}" data-cid="${containerId}">🗑️ 삭제</button>
@@ -4625,7 +4771,33 @@ function renderParsedQuestionsInto(list, containerId) {
       } else if (el.dataset.pf === 'correctAnswer') {
         const v = el.value;
         listRef[pi].correctAnswer = isNaN(parseInt(v)) ? v : parseInt(v);
+      } else if (el.dataset.pf === 'correctAnswers') {
+        const ai = parseInt(el.dataset.ai);
+        if (!listRef[pi].correctAnswers) listRef[pi].correctAnswers = [];
+        listRef[pi].correctAnswers[ai] = el.value;
       } else { listRef[pi][el.dataset.pf] = el.value; }
+    });
+  });
+
+  // 정답 항목 추가
+  container.querySelectorAll('[data-addans]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const listRef = btn.dataset.cid === 'visionParsedQList' ? visionParsedQuestions : parsedQuestions;
+      const pi = parseInt(btn.dataset.addans);
+      if (!listRef[pi].correctAnswers) listRef[pi].correctAnswers = [];
+      listRef[pi].correctAnswers.push('');
+      renderParsedQuestionsInto(listRef, btn.dataset.cid);
+    });
+  });
+
+  // 정답 항목 삭제
+  container.querySelectorAll('[data-delans]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const listRef = btn.dataset.cid === 'visionParsedQList' ? visionParsedQuestions : parsedQuestions;
+      const pi = parseInt(btn.dataset.pi);
+      const ai = parseInt(btn.dataset.delans);
+      listRef[pi].correctAnswers.splice(ai, 1);
+      renderParsedQuestionsInto(listRef, btn.dataset.cid);
     });
   });
 
