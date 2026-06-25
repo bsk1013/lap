@@ -1883,6 +1883,7 @@ input, textarea { font-family: inherit; color: inherit; }
       <div class="admin-tabs">
         <button class="admin-tab active" data-atab="vision">🤖 AI 비전</button>
         <button class="admin-tab" data-atab="ocr">📄 텍스트 파서</button>
+        <button class="admin-tab" data-atab="aitext">🧠 AI 재구성</button>
         <button class="admin-tab" data-atab="bank">📦 문제은행</button>
         <button class="admin-tab" data-atab="manual">✏️ 직접 입력</button>
       </div>
@@ -1973,6 +1974,63 @@ input, textarea { font-family: inherit; color: inherit; }
             </div>
           </div>
           <div class="parsed-q-list" id="parsedQList"></div>
+        </div>
+      </div>
+
+      <!-- ── AI TEXT RECONSTRUCT TAB ── -->
+      <div id="adminAitextTab" class="hidden">
+        <div style="background:var(--info-dim);border:1px solid rgba(108,99,255,.25);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:14px">
+          <div style="font-size:13px;font-weight:800;color:var(--info);margin-bottom:4px">🧠 AI 맥락 재구성</div>
+          <div style="font-size:12px;color:var(--text-secondary);line-height:1.6">깨진 OCR 텍스트, 복붙한 지저분한 텍스트, 어떤 형식이든 붙여넣으세요.<br>Claude가 맥락을 읽어 실기 문제로 재구성합니다.</div>
+        </div>
+
+        <div class="pq-field">
+          <div class="pq-label" style="display:flex;justify-content:space-between;align-items:center">
+            <span>원문 텍스트 (깨져도 OK)</span>
+            <span id="aitextCharCount" style="font-size:10px;color:var(--text-muted)">0자</span>
+          </div>
+          <textarea id="aitextInput" class="pq-textarea"
+            style="min-height:220px;font-size:12px;font-family:var(--font-mono);line-height:1.5"
+            placeholder="여기에 텍스트를 붙여넣으세요.
+
+예시 — 텍스트 파서 원문, PDF 복사 텍스트, 손으로 타이핑한 내용 등
+깨진 글자, 엉킨 순서, 불완전한 문장 모두 OK.
+
+45. ☆☆☆☆☆
+5개 공정이다. 물음에 답하시오.
+작업공정 1 2 3 4 5
+작업시간(초) 20 10 15 13 8
+1. 주기시간
+2. 시간당 생산량
+3. 공정(균형)효율
+
+정답
+1. 20초(=가장 긴 작업)
+2. 60분/주기시간 = 3,600초/20초 = 180개
+3. Σ작업시간/공정개수×주기시간 × 100 = (20+10+15+13+8)/(5×20) × 100 = 66%"></textarea>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-bottom:14px">
+          <button class="admin-btn admin-btn-primary" id="aitextRunBtn" style="flex:1;padding:12px">
+            🧠 Claude로 재구성
+          </button>
+          <button class="admin-btn admin-btn-secondary" id="aitextClearBtn">지우기</button>
+        </div>
+
+        <div class="ocr-progress-wrap" id="aitextProgressWrap">
+          <div class="ocr-status-text" id="aitextStatusText">분석 중...</div>
+          <div class="ocr-bar-wrap"><div class="ocr-bar-fill" id="aitextBarFill" style="width:0%"></div></div>
+        </div>
+
+        <div id="aitextParsedSection" class="hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <p class="section-title" style="margin:0">재구성 문제 <span id="aitextParsedCount">0</span>개</p>
+            <div style="display:flex;gap:6px">
+              <button class="admin-btn admin-btn-secondary" id="aitextConfirmAllBtn">✅ 전체 확정</button>
+              <button class="admin-btn admin-btn-primary" id="aitextSaveAllBtn">💾 저장</button>
+            </div>
+          </div>
+          <div class="parsed-q-list" id="aitextParsedQList"></div>
         </div>
       </div>
 
@@ -3164,7 +3222,7 @@ function bindEvents() {
       if (sid === 'adminScreen') {
         document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
         document.querySelector('.admin-tab[data-atab="vision"]').classList.add('active');
-        ['adminVisionTab','adminOcrTab','adminBankTab','adminManualTab'].forEach(id => {
+        ['adminVisionTab','adminOcrTab','adminAitextTab','adminBankTab','adminManualTab'].forEach(id => {
           document.getElementById(id).classList.toggle('hidden', id !== 'adminVisionTab');
         });
       }
@@ -4319,10 +4377,11 @@ function bindAdminEvents() {
 
   // Admin tabs
   const tabMap = {
-    vision: 'adminVisionTab',
-    ocr: 'adminOcrTab',
-    bank: 'adminBankTab',
-    manual: 'adminManualTab'
+    vision:  'adminVisionTab',
+    ocr:     'adminOcrTab',
+    aitext:  'adminAitextTab',
+    bank:    'adminBankTab',
+    manual:  'adminManualTab'
   };
   document.querySelectorAll('.admin-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -5017,6 +5076,10 @@ async function extractTextFromPDF(file) {
       if (p % 5 === 0 || p === totalPages) addOcrLog(`  → ${p}/${totalPages}p 완료 (누적 ${fullText.length}자)`);
     }
 
+    // 원문 전역 보관 (AI 재구성 탭에서 접근 가능)
+    _lastExtractedText = fullText;
+    document.getElementById('aitextInput').value = fullText;
+
     updateOcrStatus('문제 구조 파싱 중...', 88);
     const questions = parseTextToQuestions(fullText);
     finishOcrPipeline(questions);
@@ -5135,6 +5198,134 @@ function saveParsedQuestions() {
   toast(`💾 ${added}개 문제 저장 완료`);
 }
 
+/* ── AI 텍스트 재구성 ─────────────────────────────────── */
+let _lastExtractedText = '';
+let _aitextQuestions   = [];
+
+function bindAitextEvents() {
+  const input = document.getElementById('aitextInput');
+  input.addEventListener('input', () => {
+    document.getElementById('aitextCharCount').textContent = input.value.length + '자';
+  });
+  document.getElementById('aitextClearBtn').addEventListener('click', () => {
+    input.value = ''; _aitextQuestions = [];
+    document.getElementById('aitextCharCount').textContent = '0자';
+    document.getElementById('aitextParsedSection').classList.add('hidden');
+    document.getElementById('aitextProgressWrap').classList.remove('visible');
+  });
+  document.getElementById('aitextRunBtn').addEventListener('click', runAitextRecon);
+  document.getElementById('aitextConfirmAllBtn').addEventListener('click', () => {
+    document.querySelectorAll('#aitextParsedQList .parsed-q-card').forEach(c => c.classList.add('confirmed'));
+    toast('✅ 전체 확정 — [저장]으로 문제은행에 추가하세요');
+  });
+  document.getElementById('aitextSaveAllBtn').addEventListener('click', () => {
+    const added = saveQuestionsToBank(_aitextQuestions);
+    _aitextQuestions = [];
+    document.getElementById('aitextParsedSection').classList.add('hidden');
+    document.getElementById('aitextProgressWrap').classList.remove('visible');
+    toast(`💾 ${added}개 문제 저장 완료`);
+  });
+}
+
+async function runAitextRecon() {
+  const text = document.getElementById('aitextInput').value.trim();
+  if (!text) { toast('텍스트를 먼저 붙여넣으세요'); return; }
+  const key = localStorage.getItem('lap_claude_key');
+  if (!key) { toast('🔑 설정에서 Claude API Key를 먼저 입력하세요'); return; }
+
+  const wrap = document.getElementById('aitextProgressWrap');
+  wrap.classList.add('visible');
+  document.getElementById('aitextStatusText').textContent = '🧠 Claude 분석 중...';
+  document.getElementById('aitextBarFill').style.width = '30%';
+  document.getElementById('aitextParsedSection').classList.add('hidden');
+  document.getElementById('aitextRunBtn').disabled = true;
+
+  const isPrac = engineExamType === 'practical';
+  const prompt = isPrac
+    ? `아래는 자격증 실기 시험 교재에서 추출한 텍스트입니다. OCR 오류로 깨진 글자, 뒤섞인 순서, 불완전한 문장이 있을 수 있습니다.
+
+맥락을 파악해서 실기 문제를 재구성하고 JSON 배열로만 응답하세요 (설명 없이):
+
+규칙:
+- 소문항(1. 2. 3. 또는 가. 나. 다.)이 있으면 소문항마다 별도 객체로 분리
+- 표는 "항목|값1|값2|값3" 형태로 questionText에 포함
+- correctAnswers: 정답 배열 (계산 결과·단위 포함)
+- explanation: 풀이 과정 (공식·계산식 포함)
+- 깨진 텍스트는 문맥으로 추론해서 복원
+- 문제가 아닌 부분(목차·페이지번호·광고) 제외
+
+[{"number":"1-1","questionText":"...","correctAnswers":["..."],"explanation":"...","category":"..."}]
+
+===텍스트===
+${text.slice(0, 12000)}`
+    : `아래는 자격증 필기 시험 교재에서 추출한 텍스트입니다. OCR 오류가 있을 수 있습니다.
+
+맥락을 파악해서 4지/5지선다 문제를 재구성하고 JSON 배열로만 응답하세요:
+
+[{"number":1,"questionText":"...","choices":[{"index":1,"text":"..."}],"correctAnswer":2,"explanation":"...","category":"..."}]
+
+===텍스트===
+${text.slice(0, 12000)}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5',
+        max_tokens: 8192,
+        messages: [{ role: 'user', content: prompt }]
+      })
+    });
+
+    document.getElementById('aitextBarFill').style.width = '80%';
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    const raw  = data.content[0]?.text || '[]';
+    const match = raw.match(/\[[\s\S]*\]/);
+    if (!match) throw new Error('JSON 배열을 찾을 수 없습니다');
+
+    const parsed = JSON.parse(match[0]);
+    _aitextQuestions = parsed.map(q => ({
+      id: 'q-ai-' + Date.now() + '-' + Math.random().toString(36).slice(2,6),
+      subjectId: STATE.selectedSubjectId || STATE.subjects[0]?.id || 'unknown',
+      examType: engineExamType,
+      number: q.number,
+      questionText: q.questionText || '',
+      choices: q.choices || [],
+      correctAnswer: q.correctAnswer ?? null,
+      correctAnswers: q.correctAnswers || [],
+      explanation: q.explanation || '',
+      category: q.category || '',
+      tags: []
+    }));
+
+    document.getElementById('aitextBarFill').style.width = '100%';
+    document.getElementById('aitextStatusText').textContent = `✅ ${_aitextQuestions.length}개 문제 재구성 완료`;
+    document.getElementById('aitextParsedCount').textContent = _aitextQuestions.length;
+    renderParsedQuestionsInto(_aitextQuestions, 'aitextParsedQList');
+    document.getElementById('aitextParsedSection').classList.remove('hidden');
+    toast(`🧠 ${_aitextQuestions.length}개 문제 재구성 완료`);
+
+  } catch(e) {
+    document.getElementById('aitextStatusText').textContent = '❌ 실패: ' + e.message;
+    toast('재구성 실패: ' + e.message);
+  } finally {
+    document.getElementById('aitextRunBtn').disabled = false;
+  }
+}
+/* ── /AI 텍스트 재구성 ────────────────────────────────── */
+
 /* wrapper: text-parser render */
 function renderParsedQuestions() {
   document.getElementById('parsedCount').textContent = parsedQuestions.length;
@@ -5228,6 +5419,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalcDrag();
   bindChangelogEvents();
   bindAdminEvents();
+  bindAitextEvents();
   bindPracticalEvents();
   bindMemoEvents();
   renderHome();
